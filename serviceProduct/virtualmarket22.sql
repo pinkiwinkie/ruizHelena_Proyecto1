@@ -148,7 +148,7 @@ CREATE TABLE `productos` (
   `marca` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `categoria` enum('niño','hombre','mujer') COLLATE utf8_unicode_ci DEFAULT NULL,
   `unidades` int(5) NOT NULL,
-  `precio` int(4) DEFAULT NULL
+  `precio` int(4) DEFAULT NULL,
   `cantidad` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -161,13 +161,33 @@ INSERT INTO `productos` (`idProducto`, `nombre`, `descripcion`, `foto`, `marca`,
 (2, 'Light blue', 'Una fragancia florida y frutal con salida de notas frescas y refinadas (manzana Granny Smith, cedro de Sicilia y jacintos silvestres). El corazón, muy femenino, se compone de jazmín, rosa blanca y bambú. El fondo amaderado y suave está constituido por madera de cedro, ámbar y almizcles.', '../public/img/ligthblue.png', 'Dolce & Gabanna', 'mujer', 100, 90, 200),
 (3, 'Escalè a portofino', 'Un agua hespéride que se abre con “una farándula de cítricos”. La fragancia desvela luego notas de almendra amarga, de azahar, de bayas de enebro y toques amaderados de ciprés y de cedro. Un crucero olfativo en tierra italiana.', '../public/img/escale.png', 'Carolina Herrera', 'mujer', 100, 140, 125),
 (4, '212', 'Con su color malva rosado, 212 desprende una estela floral con acentos orientales, realzada con toques frutales y deliciosos.', '../public/img/212.png', 'Carolina Herrera', 'mujer', 100, 83, 80),
-(5, '1881 Fairplay', 'La salida fresca está hecha de notas de limón, pimienta blanca y cilantro. El corazón aromático revela una asociación de albahaca, romero y nuez moscada. El fondo, más amaderado, combina pachulí, sándalo y haba tonka.', '../public/img/1881.png', 'Cerruti', 'hombre', 100, 22, 100),
-(6, 'Fideos', 'Italia', 'fideos.jpg', 'gallo', 'mujer', 100, 1, 200),
-(7, 'Galletas Cuadradas', 'Francia', 'galletas.jpg', 'gullon', 'mujer', 100, 1, 200),
-(8, 'Barquillos', 'España', 'barquillos.jpg', 'cuetara', 'mujer', 100, 1, 200),
-(9, 'Barquillos', 'España', 'barquillos.jpg', 'cuetara', 'mujer', 100, 1, 200),
-(10, 'Leche entera', 'España', 'leche.jpg', 'pascual', 'niño', 100, 1, 200);
+(5, '1881 Fairplay', 'La salida fresca está hecha de notas de limón, pimienta blanca y cilantro. El corazón aromático revela una asociación de albahaca, romero y nuez moscada. El fondo, más amaderado, combina pachulí, sándalo y haba tonka.', '../public/img/1881.png', 'Cerruti', 'hombre', 100, 82, 100),
+(6, '212 Splash men', 'Un cóctel de frescura con notas de menta fresca, de bergamota y de jengibre Una nota acuosa aporta dinamismo a la fragancia y el sándalo, la gardenia y el incienso la hacen más cálida.', '../public/img/212Men.png', 'Carolina Herrera', 'hombre', 100, 64, 200),
+(7, 'Little kissme', 'Una salida fresca y florida subrayada con nenúfar, de suavidad acuática, con bambú, de tonalidades verdes y tiernas, y con granos del paraíso que contribuyen con una nota un poco picante. El fondo, muy suave, combina polvo de lirio, maderas rubias y almizcles.', '../public/img/littleKissme.png', 'Salvador Dalli', 'mujer', 100, 42, 50),
+(8, 'In love', 'Bouquet floral con toques juveniles de frutas. Contiene Ashok flower, flor de la India, conocida como la flor símbolo del amor y el romance.', '../public/img/inLove.png', 'Cyzone', 'mujer', 100, 40, 50),
+(9, 'Acqua di Gio Essenza', 'La fragancia se inicia con tonalidades chispeantes de cascalona , bergamota y piel de pomelo. El corazón revela la presencia de paradisona y de su efecto floral y fresco combinado con absoluto de jazmín, con albahaca y salvia. En el fondo se combinan pachulí, cedro Atlas, vetiver y ambrox', '../public/img/acquaDigio.png', 'Armani', 'hombre', 100, 110, 100),
+(10, 'Anvers', 'Una esencia con una salida fresca de cítricos y de plantas aromáticas. Un corazón de notas delicadamente florales, realzado con sésamo. El fondo tiene acentos de madera y de cuero, que se apoyan en un tapiz de guayaba.', '../public/img/anvers.png', 'Ulrich Lang', 'hombre', 100, 125, 100);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `idCarrito` int(6) NOT NULL,
+  `idUnico` int(6) NOT NULL,
+  `dniCliente` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
+  `idProducto` int(6) NOT NULL,
+  `cantidad` int(99) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+INSERT INTO `carrito` (`idCarrito`, `idUnico`, `dniCliente`, `idProducto`, `cantidad`) VALUES
+(1, 1, '10', 1, 2),
+(2, 2, '10', 2, 3);
 --
 -- Índices para tablas volcadas
 --
@@ -197,6 +217,12 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`idProducto`);
 
 --
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`idCarrito`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -205,6 +231,12 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `productos`
   MODIFY `idProducto` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `idCarrito` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

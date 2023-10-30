@@ -37,7 +37,7 @@
                                 <a href="#" class="sidebar-link">About</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Products</a>
+                                <a href="products.php" class="sidebar-link">Products</a>
                             </li>
                         </ul>
                     </li>
@@ -47,7 +47,7 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="./public/html/login.html" class="sidebar-link">Login</a>
+                                <a href="login.php" class="sidebar-link">Login</a>
                             </li>
                         </ul>
                     </li>
@@ -109,7 +109,7 @@
                     <!--signup-->
                     <div class="form__signup" id="form-signup">
                         <h2>Sign up</h2>
-                        <form action="../../serviceCliente/clienteService.php" method="post">
+                        <form action="../../controller/signUpController.php" method="post">
                             <input type="text" placeholder="Dni" id="signup-dni" name="dniCliente">
                             <input type="text" placeholder="Name" id="signup-name" name="nombre">
                             <input type="text" placeholder="Dirección" id="signup-direccion" name="direccion">

@@ -42,7 +42,7 @@
                                 <a href="#" class="sidebar-link">About</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../html/products.php" class="sidebar-link">Products</a>
+                                <a href="products.php" class="sidebar-link">Products</a>
                             </li>
                         </ul>
                     </li>
@@ -52,7 +52,7 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../html/login.php" class="sidebar-link">Login</a>
+                                <a href="login.php" class="sidebar-link">Login</a>
                             </li>
                         </ul>
                     </li>
@@ -88,7 +88,7 @@
             </nav>
             <!-- Show products -->
             <div class="container">
-                <div class="row">
+                <div class="row"><!-- hacerlo con el get de php, esto NO va con js -->
                     <?php
                     include "../../productService.php";
                     ?>

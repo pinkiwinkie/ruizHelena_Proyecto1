@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['register'])) {
         $cli = new Cliente($_POST['dniCliente'], $_POST['nombre'], $_POST['direccion'], $_POST['email'], $_POST['pwd']);
         if ($cli->search($base->link)) {
-            $dato = "El cliente ya existe";
-            require "../views/messageError.php";
+            $response = array('message' => 'El cliente ya existe');
+            header('Content-Type: application/json');
+            echo json_encode($response);
         } else {
             $cli->insertCliente($base->link);
-            header("HTTP/1.1 200 OK");
-            $dato = "El cliente se ha insertado correctamente";
-            require "../views/messageError.php";
-           // echo json_encode($_POST['dniCliente']);
+            $response = array('message' => 'El cliente se ha insertado correctamente');
+            header('Content-Type: application/json');
+            echo json_encode($response);
             exit();
         }
     }

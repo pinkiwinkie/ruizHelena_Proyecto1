@@ -114,7 +114,7 @@
                     <!--signup-->
                     <div class="form__signup" id="form-signup">
                         <h2>Sign up</h2>
-                        <form action="" method="post">
+                        <form action="" method="post" id="formRegistro">
                             <input type="text" placeholder="Dni" id="signup-dni" name="dniCliente">
                             <input type="text" placeholder="Name" id="signup-name" name="nombre">
                             <input type="text" placeholder="Dirección" id="signup-direccion" name="direccion">
@@ -129,6 +129,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../js/signUpFetch.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/login.js"></script>
 </body>

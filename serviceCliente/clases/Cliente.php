@@ -7,12 +7,12 @@ class Cliente {
     private $pwd;
     private $administrador;
 
-    function __construct($dni, $nombre="", $direccion="",$email="",$pwd="",$administrador=""){
-        $this->dniCliente=$dni;
+    function __construct($dni, $pwd="", $nombre="", $direccion="",$email="",$administrador=""){
+        $this->dniCliente=$dni; 
+        $this->pwd=$pwd;
         $this->nombre=$nombre;
         $this->direccion=$direccion;
         $this->email=$email;
-        $this->pwd=$pwd;
         $this->administrador=$administrador;
     }
 
@@ -44,13 +44,13 @@ class Cliente {
 
     function insertCliente($link){
         try{
-            $query="INSERT INTO clientes VALUES (:dniCliente,:nombre,:direccion,:email,:pwd,:administrador)";
+            $query="INSERT INTO clientes VALUES (:dniCliente,:pwd,:nombre,:direccion,:email,:administrador)";
             $result=$link->prepare($query);
             $result->bindParam(':dniCliente',$this->dniCliente);
+            $result->bindParam(':pwd',$this->pwd);
             $result->bindParam(':nombre',$this->nombre);
             $result->bindParam(':direccion',$this->direccion);
             $result->bindParam(':email',$this->email);
-            $result->bindParam(':pwd',$this->pwd);
             $result->bindParam(':administrador',$this->administrador);
             $result->execute();
             return $result;

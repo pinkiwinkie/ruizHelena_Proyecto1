@@ -14,18 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['register'])) {
-        $cli = new Cliente($_POST['dniCliente'], $_POST['nombre'], $_POST['direccion'], $_POST['email'], $_POST['pwd']);
-        if ($cli->search($base->link)) {
-            $response = array('message' => 'El cliente ya existe');
-            header('Content-Type: application/json');
-            echo json_encode($response);
-        } else {
-            $cli->insertCliente($base->link);
-            $response = array('message' => 'El cliente se ha insertado correctamente');
-            header('Content-Type: application/json');
-            echo json_encode($response);
-            exit();
-        }
+    $cli = new Cliente($_POST['dniCliente'], $_POST['nombre'], $_POST['direccion'], $_POST['email'], $_POST['pwd']);
+    if ($cli->search($base->link)) {
+        echo json_encode('noInsertado');
+        exit();
+    } else {
+        $cli->insertCliente($base->link);
+        echo json_encode('insertado');
+        exit();
     }
 }

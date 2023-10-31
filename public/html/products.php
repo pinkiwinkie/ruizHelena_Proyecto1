@@ -79,12 +79,13 @@
         <!-- Main Component -->
 
         <div class="main">
-            <nav class="navbar navbar-expand px-3 border-bottom">
+        <nav class="content-header navbar px-3 border-bottom">
                 <!-- Button for sidebar toggle -->
                 <button class="btn" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="../../index.php">FRAGANCE</a>
+                <a href="index.php">FRAGANCE</a>
+                <div class="nameUsuario">Hola, Helena</div>
             </nav>
             <!-- Show products -->
             <div class="container">

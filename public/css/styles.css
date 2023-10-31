@@ -127,6 +127,16 @@ a.sidebar-link {
 }
 
 
+/* Navbar */
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nameUsuario {}
+
+
 /* social Media*/
 
 .socialMedia {

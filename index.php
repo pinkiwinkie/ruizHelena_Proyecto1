@@ -56,7 +56,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="./public/html/cart.php" class="sidebar-link">
+                        <a href="#" class="sidebar-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                             <i class="bi bi-cart pe-2"></i>Cart
                         </a>
                     </li>
@@ -74,6 +74,16 @@
                 </div>
             </div>
         </aside>
+        
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Contenido de tu carrito de compras aquí -->
+            </div>
+        </div>
 
         <!-- Main Component -->
 
@@ -90,7 +100,6 @@
                 <div class="w-100"></div>
                 <h3>Los más vendidos</h3>
                 <div class="w-100"></div>
-
                 <div class="container overflow-hidden text-center">
                     <div class="row gx-5">
                         <div class="col">
@@ -121,7 +130,7 @@
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./public/js/main.js"></script>

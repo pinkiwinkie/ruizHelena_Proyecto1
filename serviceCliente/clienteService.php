@@ -9,9 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['dniCliente']) && isset($_GET['pwd'])) {
         $cli = new Cliente($_GET['dniCliente'], $_GET['pwd']);
         $dato = $cli->search($base->link);
-        header("HTTP/1.1 200 OK");
-        echo json_encode($dato);
-        exit();
+        if ($dato) {
+            echo json_encode('confirmado');
+            exit();
+        } else {
+            echo json_encode('noConfirmado');
+            exit();
+        }
     } else {
         $dato = Cliente::getAll($base->link);
         $dato->setFetchMode(PDO::FETCH_ASSOC);

@@ -57,7 +57,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="cart.php" class="sidebar-link">
+                        <a href="#" class="sidebar-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                             <i class="bi bi-cart pe-2"></i>Cart
                         </a>
                     </li>
@@ -75,6 +75,16 @@
                 </div>
             </div>
         </aside>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Contenido de tu carrito de compras aquí -->
+            </div>
+        </div>
 
         <!-- Main Component -->
 
@@ -106,8 +116,8 @@
                     <!--login-->
                     <div class="form__login" id="form-login">
                         <h2>Login</h2>
-                        <form action="" method="post">
-                            <input type="text" placeholder="Dni" id="username" name="dni">
+                        <form action="" method="post" id="formLogin">
+                            <input type="text" placeholder="Dni" id="username" name="dniCliente">
                             <input type="password" placeholder="Password" id="password" name="pwd">
                             <button role="button" type="submit" name="login">Get in</button>
                         </form>
@@ -133,6 +143,7 @@
     <script src="../js/signUpFetch.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/logInFetch.js"></script>
 </body>
 
 </html>

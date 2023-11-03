@@ -1,3 +1,7 @@
+<?php
+require '../../controller/principal.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +93,7 @@
         <!-- Main Component -->
 
         <div class="main">
-        <nav class="content-header navbar px-3 border-bottom">
+            <nav class="content-header navbar px-3 border-bottom">
                 <!-- Button for sidebar toggle -->
                 <button class="btn" type="button">
                     <span class="navbar-toggler-icon"></span>
@@ -101,7 +105,19 @@
             <div class="container">
                 <div class="row"><!-- hacerlo con el get de php, esto NO va con js -->
                     <?php
-                    include "../../productService.php";
+                    // Loop through the product data obtained in principal.php and display it
+                    foreach ($data as $product) {
+                        echo "
+                        <div class='card' style='width: 18rem; display: inline-block; margin: 10px;'> 
+                            <img src='" . $product->foto . "' class='card-img-top' alt='...'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>" . $product->nombre . "</h5>
+                                <p class='card-text'>". $product->descripcion ."</p>
+                                <a href='#' class='btn btn-primary'>Añadir carrito</a>
+                                <a href='#' class='btn btn-primary'>Ver detalles</a>
+                            </div>
+                        </div>";
+                    }
                     ?>
                 </div>
             </div>

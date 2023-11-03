@@ -42,6 +42,11 @@
                             </li>
                             <li class="sidebar-item">
                                 <a href="./public/html/products.php" class="sidebar-link">Products</a>
+                                <?php
+                                if ($_SERVER['REQUEST_URI'] === 'http://localhost/ruizHelena_Proyecto1/public/html/products.php') {
+                                    include "./controller/principal.php";
+                                }
+                                ?>
                             </li>
                         </ul>
                     </li>
@@ -74,14 +79,59 @@
                 </div>
             </div>
         </aside>
-        
+
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Tu carrito</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <!-- Contenido de tu carrito de compras aquí -->
+                <div class="carrito-items">
+                    <div class="carrito-item">
+                        <img src="./public/img/212.png" alt="" width="80px">
+                        <div class="carrito-item-details">
+                            <span class="carrito-item-title">212</span>
+                            <div class="selector-cantidad">
+                                <i class="bi bi-dash-lg restar-cantidad"></i>
+                                <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                                <i class="bi bi-plus-lg sumar-cantidad"></i>
+                            </div>
+                        </div>
+                        <span class="carrito-item-precio">155€</span>
+                    </div>
+                    <span class="btn-eliminar">
+                        <i class="bi bi-trash-fill"></i>
+                    </span>
+                </div>
+
+                <div class="carrito-items">
+                    <div class="carrito-item">
+                        <img src="./public/img/inLove.png" alt="" width="80px">
+                        <div class="carrito-item-details">
+                            <span class="carrito-item-title">In love</span>
+                            <div class="selector-cantidad">
+                                <i class="bi bi-dash-lg restar-cantidad"></i>
+                                <input type="text" value="2" class="carrito-item-cantidad" disabled>
+                                <i class="bi bi-plus-lg sumar-cantidad"></i>
+                            </div>
+                        </div>
+                        <span class="carrito-item-precio">80€</span>
+                    </div>
+                    <span class="btn-eliminar">
+                        <i class="bi bi-trash-fill"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="carrito-total">
+                <div class="row">
+                    <strong>Tu total</strong>
+                    <span class="carrito-precio-total">
+                        235€
+                    </span>
+                </div>
+                <button class="btn-pagar">
+                    <i class="bi bi-bag-fill"></i>
+                </button>
             </div>
         </div>
 

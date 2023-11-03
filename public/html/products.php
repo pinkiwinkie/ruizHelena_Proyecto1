@@ -105,14 +105,13 @@ require '../../controller/principal.php';
             <div class="container">
                 <div class="row"><!-- hacerlo con el get de php, esto NO va con js -->
                     <?php
-                    // Loop through the product data obtained in principal.php and display it
                     foreach ($data as $product) {
                         echo "
                         <div class='card' style='width: 18rem; display: inline-block; margin: 10px;'> 
                             <img src='" . $product->foto . "' class='card-img-top' alt='...'>
                             <div class='card-body'>
                                 <h5 class='card-title'>" . $product->nombre . "</h5>
-                                <p class='card-text'>". $product->descripcion ."</p>
+                                <p class='card-text'>". $product->precio ."€</p>
                                 <a href='#' class='btn btn-primary'>Añadir carrito</a>
                                 <a href='#' class='btn btn-primary'>Ver detalles</a>
                             </div>

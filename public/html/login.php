@@ -29,7 +29,7 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../../index.php" class="sidebar-link">
+                        <a href="./home.php" class="sidebar-link">
                             <i class="bi bi-house pe-2"></i>Home
                         </a>
                     </li>
@@ -42,7 +42,7 @@
                                 <a href="#" class="sidebar-link">About</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="products.php" class="sidebar-link">Products</a>
+                                <a href="../../controller/principal.php" class="sidebar-link">Products</a>
                             </li>
                         </ul>
                     </li>
@@ -94,7 +94,7 @@
                 <button class="btn" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="index.php">FRAGANCE</a>
+                <a href="./home.php">FRAGANCE</a>
                 <div class="nameUsuario">Hola, Helena</div>
             </nav>
             <!-- Forms login signup -->

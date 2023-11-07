@@ -3,11 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragance</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <link rel="stylesheet" href="../public/css/products.css">
+    <title>Detalles del producto</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Kumbh+Sans:wght@400;700&family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -20,7 +18,7 @@
             <div class="h-100 myContainer">
                 <div class="sidebar-logo">
                     <div>
-                        <img class="img-logo" src="../public/img/logo.png" alt="">
+                        <img class="img-logo" src="../img/logo.png" alt="">
                     </div>
                     <div class="close-button">
                         <span class="bi bi-x-lg"></span>
@@ -29,7 +27,7 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="../public/html/home.php" class="sidebar-link">
+                        <a href="index.php" class="sidebar-link">
                             <i class="bi bi-house pe-2"></i>Home
                         </a>
                     </li>
@@ -42,7 +40,7 @@
                                 <a href="#" class="sidebar-link">About</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="products.php" class="sidebar-link">Products</a>
+                                <a href="../../controller/principal.php" class="sidebar-link">Products</a>
                             </li>
                         </ul>
                     </li>
@@ -52,7 +50,7 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../public/html/login.php" class="sidebar-link">Login</a>
+                                <a href="../html/login.php" class="sidebar-link">Login</a>
                             </li>
                         </ul>
                     </li>
@@ -76,16 +74,6 @@
             </div>
         </aside>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <!-- Contenido de tu carrito de compras aquí -->
-            </div>
-        </div>
-
         <!-- Main Component -->
 
         <div class="main">
@@ -94,35 +82,37 @@
                 <button class="btn" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="./home.php">FRAGANCE</a>
+                <a href="index.php">FRAGANCE</a>
                 <div class="nameUsuario">Hola, <?php echo isset($_COOKIE['nombre']) ? $_COOKIE['nombre'] : 'Usuario'; ?></div>
             </nav>
-            <!-- Show products -->
+
             <div class="container">
-                <div class="row md-0">
-                    <?php
-                        foreach ($data as $product) {
-                            echo "
-                            <div class='col-3'>
-                                <div class='card' style='width: 18rem; margin: 10px;'>
-                                    <img src='" . $product->foto . "' class='card-img-top' alt='...'>
-                                    <div class='card-body'>
-                                        <h5 class='card-title'>" . $product->nombre . "</h5>
-                                        <p class='card-text'>" . $product->precio . "€</p>
-                                    </div>
-                                    <div class='card-footer'>
-                                        <a href='#' class='btn btn-primary'>Añadir al carrito</a>
-                                        <a href='../public/html/details.php' class='btn btn-primary'>Ver detalles</a>
-                                    </div>
-                                </div>
-                            </div>";
-                        }
-                    ?>
-                </div>
+                <?php
+                echo "
+                <div class='card mb-3' style='max-width: 540px;'>
+                    <div class='row g-0 md-0'>
+                        <div class='col-md-4'>
+                            <img src='" . $product->foto . "' class='img-fluid rounded-start' alt='...'>
+                        </div>
+                        <div class='col-md-8'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>" . $product->nombre . "</h5>
+                                <p class='card-text'>" . $product->descripcion . "</p>
+                                <p class='card-text'>" . $product->precio . "</p>
+                                <input type='number' min='1' name='' id=''>
+                            </div>
+                            <form>
+                            <button>Comprar</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>";
+                ?>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="../public/js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
+
 </html>

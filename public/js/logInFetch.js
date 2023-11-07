@@ -1,4 +1,5 @@
 var formLogin = document.getElementById("formLogin");
+var formHidden = document.getElementById("formHidden");
 
 formLogin.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -11,13 +12,13 @@ formLogin.addEventListener("submit", function(e) {
     console.log(pwd);
 
 
-    fetch('http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php', {
-            method: 'POST',
-            body: dates
-        })
+    fetch(`http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php?dniCliente=${dniCliente}&pwd=${pwd}`)
         .then(res => res.json())
         .then(data => {
-            if (data === 'confirmado') {
+            if (data.dniCliente != "" & data.nombre != "") {
+                document.getElementById("formHidden-dni").value = data.dniCliente;
+                document.getElementById("formHidden-name").value = data.nombre;
+                formHidden.submit();
                 alert('Has iniciado sesión');
             } else {
                 alert('Inicio de sesión fallido');

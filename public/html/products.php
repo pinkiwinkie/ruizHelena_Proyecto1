@@ -29,7 +29,7 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="./home.php" class="sidebar-link">
+                        <a href="../public/html/home.php" class="sidebar-link">
                             <i class="bi bi-house pe-2"></i>Home
                         </a>
                     </li>

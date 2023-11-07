@@ -61,29 +61,14 @@ class Cliente {
         }
     }
 
-    public function validarUsuario($link, $dniCliente, $pwd) {
+    public function validarUsuario($link) {
         try {
             $query = "SELECT * FROM clientes WHERE dniCliente = :dniCliente AND pwd = :pwd";
             $result = $link->prepare($query);
-            $result->bindParam(':dniCliente', $dniCliente, PDO::PARAM_STR);
-            $result->bindParam(':pwd', $pwd, PDO::PARAM_STR);
+            $result->bindParam(':dniCliente', $this->dniCliente);
+            $result->bindParam(':pwd', $this->pwd);
             $result->execute();
             return $result->fetch(PDO::FETCH_ASSOC); 
-        } catch (PDOException $e) {
-            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
-            require "../views/messageError.php";
-            die();
-        }
-    }
-
-    public static function obtenerNombreUsuario($link, $dniCliente) {
-        try {
-            $query = "SELECT nombre FROM clientes WHERE dniCliente = :dniCliente";
-            $result = $link->prepare($query);
-            $result->bindParam(':dniCliente', $dniCliente, PDO::PARAM_STR);
-            $result->execute();
-            $nombre = $result->fetch(PDO::FETCH_ASSOC);
-            return $nombre['nombre'] ?? 'Nombre de Usuario Desconocido';
         } catch (PDOException $e) {
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";
             require "../views/messageError.php";

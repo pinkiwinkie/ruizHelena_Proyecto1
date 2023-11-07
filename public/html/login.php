@@ -89,7 +89,7 @@
         <!-- Main Component -->
 
         <div class="main">
-        <nav class="content-header navbar px-3 border-bottom">
+            <nav class="content-header navbar px-3 border-bottom">
                 <!-- Button for sidebar toggle -->
                 <button class="btn" type="button">
                     <span class="navbar-toggler-icon"></span>
@@ -133,10 +133,13 @@
                             <input type="password" placeholder="Password" id="signup-password" name="pwd">
                             <button role="button" type="submit" name="register">Register</button>
                         </form>
-
                     </div>
                 </div>
             </div>
+            <form action="../../controller/validar.php" method="post" id="formHidden" style="visibility: hidden;display:none;">
+                <input type="text" placeholder="Dni" id="formHidden-dni" name="dniCliente">
+                <input type="text" placeholder="Name" id="formHidden-name" name="nombre">
+            </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

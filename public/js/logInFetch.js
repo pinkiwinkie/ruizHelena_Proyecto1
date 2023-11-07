@@ -5,11 +5,16 @@ formLogin.addEventListener("submit", function(e) {
     console.log("hiciste click");
 
     var dates = new FormData(formLogin)
-    console.log(dates.dniCliente);
-    console.log(dates.pwd);
+    var dniCliente = dates.get('dniCliente');
+    var pwd = dates.get('pwd');
+    console.log(dniCliente);
+    console.log(pwd);
 
 
-    fetch('http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php')
+    fetch('http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php', {
+            method: 'POST',
+            body: dates
+        })
         .then(res => res.json())
         .then(data => {
             if (data === 'confirmado') {

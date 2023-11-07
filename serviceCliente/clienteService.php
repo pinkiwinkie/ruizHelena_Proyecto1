@@ -5,11 +5,20 @@ include "./clases/Cliente.php";
 
 $base = new Bd();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['dniCliente']) && isset($_GET['pwd'])) {
-        $cli = new Cliente($_GET['dniCliente'], $_GET['pwd']);
-        $dato = $cli->search($base->link);
-        if ($dato) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['dniCliente']) && isset($_POST['pwd'])) {
+        $dniCliente = $_POST['dniCliente'];
+        $pwd = $_POST['pwd'];
+
+        $cliente = new Cliente($dniCliente, $pwd);
+        $clienteInfo = $cliente->validarUsuario($base->link, $dniCliente, $pwd);
+
+        if ($clienteInfo) {
+            $nombreUsuario = Cliente::obtenerNombreUsuario($base->link, $dniCliente);
+            
+            setcookie('nombre', $nombreUsuario, 0, '/');
+            setcookie('dni', $dniCliente, 0, '/');
+
             echo json_encode('confirmado');
             exit();
         } else {

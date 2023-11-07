@@ -139,7 +139,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a href="index.php">FRAGANCE</a>
-                <div class="nameUsuario">Hola, Helena</div>
+                <div class="nameUsuario">Hola, <?php echo isset($_COOKIE['nombre']) ? $_COOKIE['nombre'] : 'Usuario'; ?></div>
             </nav>
             <div class="container__sellers">
                 <div class="w-100"></div>

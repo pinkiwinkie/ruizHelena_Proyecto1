@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($clienteInfo) {
             $nombreUsuario = Cliente::obtenerNombreUsuario($base->link, $dniCliente);
-
+            
             setcookie('nombre', $nombreUsuario, 0, '/');
             setcookie('dni', $dniCliente, 0, '/');
 
@@ -26,14 +26,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     } else {
-        $cli = new Cliente($_POST['dniCliente'], $_POST['nombre'], $_POST['direccion'], $_POST['email'], $_POST['pwd']);
-        if ($cli->search($base->link)) {
-            echo json_encode('noInsertado');
-            exit();
-        } else {
-            $cli->insertCliente($base->link);
-            echo json_encode('insertado');
-            exit();
-        }
+        $dato = Cliente::getAll($base->link);
+        $dato->setFetchMode(PDO::FETCH_ASSOC);
+        header("HTTP/1.1 200 OK");
+        echo json_encode($dato->fetchAll());
+        exit();
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $cli = new Cliente($_POST['dniCliente'], $_POST['nombre'], $_POST['direccion'], $_POST['email'], $_POST['pwd']);
+    if ($cli->search($base->link)) {
+        echo json_encode('noInsertado');
+        exit();
+    } else {
+        $cli->insertCliente($base->link);
+        echo json_encode('insertado');
+        exit();
     }
 }

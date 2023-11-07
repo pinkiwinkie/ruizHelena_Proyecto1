@@ -20,7 +20,7 @@ formRegister.addEventListener('submit', function(e) {
             })
             .then(res => res.json())
             .then(data => {
-                //  console.log(data);
+                console.log(data);
                 if (data == 'noInsertado') {
                     alert("El usuario ya existe")
                 } else {

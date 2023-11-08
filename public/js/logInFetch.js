@@ -15,8 +15,9 @@ formLogin.addEventListener("submit", function(e) {
     fetch(`http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php?dniCliente=${dniCliente}&pwd=${pwd}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             if (data.dniCliente != "" & data.nombre != "") {
-                document.getElementById("formHidden-dni").value = data.dniCliente;
+                document.getElementById("formHidden-dni").value = dniCliente;
                 document.getElementById("formHidden-name").value = data.nombre;
                 formHidden.submit();
                 alert('Has iniciado sesión');

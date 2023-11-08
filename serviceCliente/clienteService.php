@@ -9,18 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     if (isset($_GET['dniCliente']) && isset($_GET['pwd'])) {
         $dniCliente = $_GET['dniCliente'];
-        $pwd = $_GET['pwd'];
-        
-        $cliente = new Cliente($dniCliente, $pwd);
-        $clienteInfo = $cliente->validarUsuario($base->link);
-
-        if ($clienteInfo) {
-            //password_verify($pwd, $clienteInfo['pwd']);
-            echo json_encode($clienteInfo);
+        $cli= new Cliente($dniCliente);
+        $cli= $cli->search($base->link);
+        if($cli){
+            $pwd = $_GET['pwd'];
+            if(password_verify($pwd, $cli['pwd'])){
+                echo json_encode($cli);
             exit();
-        } else {
-            echo json_encode('noConfirmado');
-            exit();
+            }else {
+                echo json_encode('noConfirmado');
+                exit();
+            }
         }
     } else {
         $dato = Cliente::getAll($base->link);

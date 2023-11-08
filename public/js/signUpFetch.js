@@ -30,7 +30,7 @@ formRegister.addEventListener("submit", function(e) {
                     alert("El usuario ya existe");
                 } else {
                     alert("Usuario registrado correctamente");
-                    document.getElementById("formHidden-dni").value = dates.get('dniCliente');
+                    document.getElementById("formHidden-dni").value = dniCliente;
                     document.getElementById("formHidden-name").value = dates.get('nombre');
                     formHidden.submit();
                     alert('Has iniciado sesión');

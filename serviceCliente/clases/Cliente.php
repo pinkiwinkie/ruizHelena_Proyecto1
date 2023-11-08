@@ -44,7 +44,7 @@ class Cliente {
 
     function insertCliente($link){
         try{
-            $query="INSERT INTO clientes VALUES (:dniCliente,:pwd,:nombre,:direccion,:email,:administrador)";
+            $query="INSERT INTO clientes VALUES (:dniCliente,:nombre,:direccion,:email,:pwd,:administrador)";
             $result=$link->prepare($query);
             $result->bindParam(':dniCliente',$this->dniCliente);
             $result->bindParam(':pwd',$this->pwd);

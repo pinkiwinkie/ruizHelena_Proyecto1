@@ -24,21 +24,31 @@ class Cart{
             return $result;
         }catch (PDOException $e){
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";
-			require "vistas/mensaje.php";
+			//require "vistas/mensaje.php";
 			die();
         }
     }
 
-    function insertar($link){
+    function insertarLineaCarrito($link){
         try{
-            $query = "INSERT INTO carrito VALUES(:idUnico, :dniCliente, :idProducto, :cantidad)";
+            $query = "INSERT INTO carrito VALUES(:idCarrito, :idUnico, :dniCliente, :idProducto, :cantidad)";
             $result = $link->prepare($query);
+            $result->bindParam(':idCarrito', $this->idCarrito);
+            $result->bindParam(':idUnico', $this->idUnico);
+            $result->bindParam(':dniCliente', $this->dniCliente);
+            $result->bindParam(':idProducto', $this->idProducto);
+            $result->bindParam(':cantidad', $this->cantidad);
             $result->execute();
             return $result->fetch(PDO::FETCH_ASSOC);
         }catch (PDOException $e) {
 			$dato = "¡Error!: " . $e->getMessage() . "<br/>";
-			require "vistas/mensaje.php";
+            echo $dato;
+			//require "vistas/mensaje.php";
 			die();
 		}
+    }
+
+    function deleteLineaCarrito(){
+
     }
 }

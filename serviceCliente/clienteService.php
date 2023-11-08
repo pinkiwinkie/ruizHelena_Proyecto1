@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $cli = new Cliente($_POST['dniCliente'], $_POST['pwd'], $_POST['nombre'], $_POST['direccion'], $_POST['email']);
+    $passwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+    $cli = new Cliente($_POST['dniCliente'], $passwd, $_POST['nombre'], $_POST['direccion'], $_POST['email']);
     if ($cli->search($base->link)) {
-        //$passwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
         echo json_encode('noInsertado');
         exit();
     } else {

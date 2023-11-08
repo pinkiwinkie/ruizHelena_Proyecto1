@@ -30,21 +30,10 @@ formRegister.addEventListener("submit", function(e) {
                     alert("El usuario ya existe");
                 } else {
                     alert("Usuario registrado correctamente");
-                    fetch(`http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php?dniCliente=${dniCliente}&pwd=${pwd}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.dniCliente != "" & data.nombre != "") {
-                                document.getElementById("formHidden-dni").value = data.dniCliente;
-                                document.getElementById("formHidden-name").value = data.nombre;
-                                formHidden.submit();
-                                alert('Has iniciado sesión');
-                            } else {
-                                alert('Inicio de sesión fallido');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
+                    document.getElementById("formHidden-dni").value = dates.get('dniCliente');
+                    document.getElementById("formHidden-name").value = dates.get('nombre');
+                    formHidden.submit();
+                    alert('Has iniciado sesión');
                 }
             });
     }

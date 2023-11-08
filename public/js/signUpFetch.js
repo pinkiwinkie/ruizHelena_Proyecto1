@@ -16,12 +16,10 @@ formRegister.addEventListener("submit", function(e) {
     ) {
         alert("Introduce valores");
     } else {
-        fetch(
-                "http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php", {
-                    method: "POST",
-                    body: dates,
-                }
-            )
+        fetch("http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php", {
+                method: "POST",
+                body: dates,
+            })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

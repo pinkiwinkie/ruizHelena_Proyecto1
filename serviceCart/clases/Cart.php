@@ -1,13 +1,14 @@
 <?php
 
-class Cart{
+class Cart
+{
     private $idCarrito;
     private $idUnico;
     private $dniCliente;
     private $idProducto;
     private $cantidad;
 
-    function __construct($idCarrito,$idUnico,$dniCliente="",$idProducto="",$cantidad="")
+    function __construct($idCarrito, $idUnico, $dniCliente = "", $idProducto = "", $cantidad = "")
     {
         $this->idCarrito = $idCarrito;
         $this->idUnico = $idUnico;
@@ -16,21 +17,23 @@ class Cart{
         $this->cantidad = $cantidad;
     }
 
-    static function getAll($link){
-        try{
+    static function getAll($link)
+    {
+        try {
             $query = "SELECT * FROM carrito";
             $result = $link->prepare($query);
             $result->execute();
             return $result;
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";
-			//require "vistas/mensaje.php";
-			die();
+            //require "vistas/mensaje.php";
+            die();
         }
     }
 
-    function insertarLineaCarrito($link){
-        try{
+    function insertarLineaCarrito($link)
+    {
+        try {
             $query = "INSERT INTO carrito VALUES(:idCarrito, :idUnico, :dniCliente, :idProducto, :cantidad)";
             $result = $link->prepare($query);
             $result->bindParam(':idCarrito', $this->idCarrito);
@@ -40,15 +43,24 @@ class Cart{
             $result->bindParam(':cantidad', $this->cantidad);
             $result->execute();
             return $result->fetch(PDO::FETCH_ASSOC);
-        }catch (PDOException $e) {
-			$dato = "¡Error!: " . $e->getMessage() . "<br/>";
+        } catch (PDOException $e) {
+            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
             echo $dato;
-			//require "vistas/mensaje.php";
-			die();
-		}
+            //require "vistas/mensaje.php";
+            die();
+        }
     }
 
-    function deleteLineaCarrito(){
-
+    function deleteLineaCarrito($link)
+    {
+        try {
+            $query = "DELETE FROM carrito where idProducto='$this->idProducto'";
+            $result = $link->prepare($query);
+            return $result->execute();
+        } catch (PDOException $e) {
+            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
+            require "vistas/mensaje.php";
+            die();
+        }
     }
 }

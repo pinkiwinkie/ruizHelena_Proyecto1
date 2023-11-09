@@ -142,33 +142,37 @@
                 <div class="nameUsuario">Hola, <?php echo isset($_COOKIE['nombre']) ? $_COOKIE['nombre'] : 'Usuario'; ?></div>
             </nav>
             <!-- More sellers -->
-            <div class="container__sellers">
-                <div class="w-100"></div>
-                <h3>Los más vendidos</h3>
-                <div class="w-100"></div>
-                <div class="container overflow-hidden text-center">
-                    <div class="row gx-5">
-                        <div class="col">
-                            <div class="p-3 product">
-                                <img class="product-image" src="../img/ligthblue.png" alt="">
-                                <div class="product__info">
-                                    <h4 class="product-info__title">Light blue</h4>
-                                    <div class="product-info__description">
-                                        Una fragancia florida y frutal con salida de notas frescas y refinadas (manzana Granny Smith, cedro de Sicilia y jacintos silvestres).<br>El corazón, muy femenino, se compone de jazmín, rosa blanca y bambú.<br>El fondo amaderado y suave está constituido por madera de cedro, ámbar y almizcles.
+            <div class="container">
+                <h1 class="title text-center py-4">Productos más vendidos</h1>
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <div class="card card-home mb-3 m-2 cb1 text-center">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="../img/ligthblue.png" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-4">Light blue</h5>
+                                        <p class="card-text">Una fragancia florida y frutal con salida de notas frescas y refinadas (manzana Granny Smith, cedro de Sicilia y jacintos silvestres). El corazón, muy femenino, se compone de jazmín, rosa blanca y bambú. El fondo amaderado y suave está constituido por madera de cedro, ámbar y almizcles.</p>
+                                        <a href="#" class="btn btn-card">Añadir al carrito</a>
                                     </div>
-                                    <input type="submit" class="product-info__button btn btn-primary" value="Añadir al carrito"></input>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="p-3 product">
-                                <img class="product-image" src="../img/escale.png" alt="">
-                                <div class="product__info">
-                                    <h4 class="product-info__title">Escale à portofino</h4>
-                                    <div class="product-info__description">
-                                        Un agua hespéride que se abre con “una farándula de cítricos”.<br>La fragancia desvela luego notas de almendra amarga, de azahar, de bayas de enebro y toques amaderados de ciprés y de cedro.<br>Un crucero olfativo en tierra italiana.
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <div class="card card-home mb-3 m-2 cb1 text-center">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="../img/escale.png" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-4">Escalè a portofino</h5>
+                                        <p class="card-text">Un agua hespéride que se abre con “una farándula de cítricos”. La fragancia desvela luego notas de almendra amarga, de azahar, de bayas de enebro y toques amaderados de ciprés y de cedro. Un crucero olfativo en tierra italiana.</p>
+                                        <a href="#" class="btn btn-card">Añadir al carrito</a>
                                     </div>
-                                    <input type="submit" class="product-info__button btn btn-primary" value="Añadir al carrito"></input>
                                 </div>
                             </div>
                         </div>

@@ -90,18 +90,22 @@
                 <?php
                 if ($data) {
                     echo "
-            <div class='card mb-3' style='max-width: 540px;'>
-                <div class='row g-0 md-0'>
-                    <div class='col-md-4'>
-                        <img src='" . $data->foto . "' class='img-fluid rounded-start' alt='...'>
-                    </div>
-                    <div class='col-md-8'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>" . $data->nombre . "</h5>
-                            <p class='card-text'>" . $data->descripcion . "</p>
-                            <p class='card-text'>" . $data->precio . "</p>
-                            <input type='number' min='1' name='' value='1' id=''>
-                            <button class='btn btn-primary'>Comprar</button>
+            <div class='row'>
+                <div class='col-md-12 d-flex justify-content-center'>
+                    <div class='card card-home mb-3 m-2 cb1 text-center'>
+                        <div class='row g-0'>
+                            <div class='col-md-5'>
+                                <img src='" . $data->foto . "' class='img-fluid rounded-start' alt='...'>
+                            </div>
+                            <div class='col-md-5'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>" . $data->nombre . "</h5>
+                                    <p class='card-text'>" . $data->descripcion . "</p>
+                                    <p class='card-text'>" . $data->precio . "€</p>
+                                    <input type='number' min='1' name='' value='1' id=''>
+                                    <a href='#' class='btn btn-card'>Comprar</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

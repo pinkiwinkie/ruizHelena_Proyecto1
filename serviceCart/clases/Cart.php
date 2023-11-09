@@ -54,12 +54,14 @@ class Cart
     function deleteLineaCarrito($link)
     {
         try {
-            $query = "DELETE FROM carrito where idProducto='$this->idProducto'";
+            $query = "DELETE FROM carrito WHERE idProducto = :idProducto";
             $result = $link->prepare($query);
+            $result->bindParam(':idProducto', $this->idProducto);
             return $result->execute();
         } catch (PDOException $e) {
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";
-            require "vistas/mensaje.php";
+            echo $dato;
+            //require "vistas/mensaje.php";
             die();
         }
     }

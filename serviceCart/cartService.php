@@ -20,7 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $idProducto = $_GET['idProducto'];
-
+        
+    $cart = new Cart($idCarrito, $idUnico, $dniCliente, $idProducto);
+    
+    if ($cart->deleteLineaCarrito($base->link)) {
+        http_response_code(200); 
+        echo json_encode(["message" => "Eliminación exitosa"]);
+    } else {
+        http_response_code(500); 
+        echo json_encode(["message" => "Error en la eliminación"]);
+    }
 }

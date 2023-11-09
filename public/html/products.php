@@ -112,7 +112,7 @@
                                     </div>
                                     <div class='card-footer'>
                                         <a href='#' class='btn btn-primary'>Añadir al carrito</a>
-                                        <a href='../public/html/details.php' class='btn btn-primary'>Ver detalles</a>
+                                        <a href='../public/html/details.php?idProducto=" . $product->idProducto . "' class='btn btn-primary'>Ver detalles</a>
                                     </div>
                                 </div>
                             </div>";

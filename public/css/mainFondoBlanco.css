@@ -126,7 +126,6 @@ a.sidebar-link {
 .content-header {
     display: flex;
     justify-content: space-between;
-    background-color: #94ccc3;
 }
 
 .nameUsuario {}
@@ -158,7 +157,7 @@ a.sidebar-link {
     width: 90%;
     max-width: 600px;
     padding: .5rem;
-    border-radius: 0.5rem!important;
+    border-radius: 1rem!important;
     border: 1px solid transparent!important;
     backdrop-filter: blur(1rem)!important;
     box-shadow: 0.8rem 0.8rem 0.8rem rgba(0, 0, 0, 0.5);

@@ -1,18 +1,14 @@
 <?php
-require '../../serviceProduct/clases/Product.php';
-require '../../model/Bd.php';
+$api_url = 'http://localhost/ruizHelena_Proyecto1/serviceProduct/productService.php';
+$response = file_get_contents($api_url);
 
-class ProductController {
-    public function showProductDetails() {
-        $bd = new Bd();
-
-        if (isset($_GET['idProducto'])) {
-            $idProducto = $_GET['idProducto'];
-            $product = new Product($idProducto);
-            $productoEncontrado = $product->buscarProductoPorId($bd->link);
-            return $productoEncontrado;
-        } else {
-            return null;
-        }
+echo $response;
+    $data = json_decode($response);
+    var_dump($data);
+    if (!empty($data)) {   
+        include "../public/html/details.php";  
+    } else {
+        echo 'error 2';
     }
-}
+
+?>

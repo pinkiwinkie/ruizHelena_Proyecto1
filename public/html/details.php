@@ -27,7 +27,7 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="index.php" class="sidebar-link">
+                        <a href="../public/html/home.php" class="sidebar-link">
                             <i class="bi bi-house pe-2"></i>Home
                         </a>
                     </li>
@@ -40,7 +40,7 @@
                                 <a href="#" class="sidebar-link">About</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Products</a>
+                                <a href="principal.php" class="sidebar-link">Products</a>
                             </li>
                         </ul>
                     </li>
@@ -50,7 +50,7 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../html/login.php" class="sidebar-link">Login</a>
+                                <a href="../public/html/login.php" class="sidebar-link">Login</a>
                             </li>
                         </ul>
                     </li>
@@ -82,7 +82,7 @@
                 <button class="btn" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="index.php">FRAGANCE</a>
+                <a href="../public/html/home.php">FRAGANCE</a>
                 <div class="nameUsuario">Hola, <?php echo isset($_COOKIE['nombre']) ? $_COOKIE['nombre'] : 'Usuario'; ?></div>
             </nav>
 
@@ -92,7 +92,7 @@
                     echo "
             <div class='row'>
                 <div class='col-md-12 d-flex justify-content-center'>
-                    <div class='card card-home mb-3 m-2 cb1 text-center'>
+                    <div class='card card-home mb-3 m-5 cb1 text-center'>
                         <div class='row g-0'>
                             <div class='col-md-5'>
                                 <img src='" . $data->foto . "' class='img-fluid rounded-start' alt='...'>
@@ -103,7 +103,7 @@
                                     <p class='card-text'>" . $data->descripcion . "</p>
                                     <p class='card-text'>" . $data->precio . "€</p>
                                     <input type='number' min='1' name='' value='1' id=''>
-                                    <a href='#' class='btn btn-card'>Comprar</a>
+                                    <a href='#' class='btn btn-card m-3'>Comprar</a>
                                 </div>
                             </div>
                         </div>

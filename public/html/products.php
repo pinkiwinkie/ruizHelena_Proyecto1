@@ -99,20 +99,20 @@
             </nav>
             <!-- Show products -->
             <div class="container">
-                <div class="row md-0">
+                <div class="row">
                     <?php
                         foreach ($data as $product) {
                             echo "
-                            <div class='col-3'>
-                                <div class='card' style='width: 18rem; margin: 10px;'>
+                            <div class='col-3 d-flex '>
+                                <div class='card card-home mb-3 m-2 cb1 text-center' style='margin: 10px;'>
                                     <img src='" . $product->foto . "' class='card-img-top' alt='...'>
                                     <div class='card-body'>
-                                        <h5 class='card-title'>" . $product->nombre . "</h5>
+                                        <h5 class='card-title mb-4'>" . $product->nombre . "</h5>
                                         <p class='card-text'>" . $product->precio . "€</p>
                                     </div>
                                     <div class='card-footer'>
-                                        <a href='#' class='btn btn-primary'>Añadir al carrito</a>
-                                        <a href='../controller/detalles.php?idProducto=". $product->idProducto ."' class='btn btn-primary'>Ver detalles</a>
+                                        <a href='#' class='btn btn-card'>Añadir al carrito</a>
+                                        <a href='../controller/detalles.php?idProducto=". $product->idProducto ."' class='btn btn-card'>Ver detalles</a>
                                     </div>
                                 </div>
                             </div>";

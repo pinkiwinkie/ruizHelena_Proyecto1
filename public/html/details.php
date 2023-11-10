@@ -99,7 +99,8 @@
                             </div>
                             <div class='col-md-5'>
                                 <div class='card-body'>
-                                    <h5 class='card-title'>" . $data->nombre . "</h5>
+                                    <h4 class='card-title'>" . $data->nombre . "</h4>
+                                    <h6 class='card-subtitle m-3'>" . $data->marca . "</h6>
                                     <p class='card-text'>" . $data->descripcion . "</p>
                                     <p class='card-text'>" . $data->precio . "€</p>
                                     <input type='number' min='1' name='' value='1' id=''>

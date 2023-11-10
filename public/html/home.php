@@ -28,7 +28,7 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="index.php" class="sidebar-link">
+                        <a href="home.php" class="sidebar-link">
                             <i class="bi bi-house pe-2"></i>Home
                         </a>
                     </li>

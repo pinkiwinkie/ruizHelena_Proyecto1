@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $lineaCarrito = new Cart(0,$_POST['idUnico'], 0, $_POST['dniCliente'], $_POST['idProducto'], $_POST['cantidad']);
+    $lineaCarrito = new Cart(0,$_POST['idUnico'], $_POST['idProducto'], $_POST['cantidad'], $_POST['dniCliente']);
     $lineaCarrito->insertarLineaCarrito($base->link);
     echo json_encode('insertado');
     exit();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $idProducto = $_GET['idProducto'];
         
-    $cart = new Cart($idCarrito, $idUnico, $dniCliente, $idProducto);
+    $cart = new Cart($idCarrito, $idUnico, $dniCliente, $idProducto,$cantdidad);
     
     if ($cart->deleteLineaCarrito($base->link)) {
         http_response_code(200); 

@@ -8,7 +8,7 @@ class Cart
     private $idProducto;
     private $cantidad;
 
-    function __construct($idCarrito, $idUnico, $dniCliente = "", $idProducto = "", $cantidad = "")
+    function __construct($idCarrito, $idUnico, $idProducto = "", $cantidad = "",$dniCliente = "")
     {
         $this->idCarrito = $idCarrito;
         $this->idUnico = $idUnico;

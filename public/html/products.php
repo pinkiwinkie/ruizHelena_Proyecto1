@@ -99,6 +99,7 @@
             </nav>
             <!-- Show products -->
             <div class="container">
+            <h1 class="title text-center py-4">Nuestros productos</h1>
                 <div class="row">
                     <?php
                         foreach ($data as $product) {

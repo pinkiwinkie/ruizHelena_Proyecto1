@@ -80,43 +80,35 @@
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">Tu carrito</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-                <div class="carrito-items">
-                    <div class="carrito-item">
-                        <img src="../img/212.png" alt="" width="80px">
-                        <div class="carrito-item-details">
-                            <span class="carrito-item-title">212</span>
-                            <div class="selector-cantidad">
-                                <i class="bi bi-dash-lg restar-cantidad"></i>
-                                <input type="text" value="1" class="carrito-item-cantidad" disabled>
-                                <i class="bi bi-plus-lg sumar-cantidad"></i>
-                            </div>
-                        </div>
-                        <span class="carrito-item-precio">155€</span>
-                    </div>
-                    <span class="btn-eliminar">
-                        <i class="bi bi-trash-fill"></i>
-                    </span>
-                </div>
+            <!-- LINEAS CARRITO -->
+            <?php
+            // Tu código para inicializar $show
 
-                <div class="carrito-items">
-                    <div class="carrito-item">
-                        <img src="../img/inLove.png" alt="" width="80px">
-                        <div class="carrito-item-details">
-                            <span class="carrito-item-title">In love</span>
-                            <div class="selector-cantidad">
-                                <i class="bi bi-dash-lg restar-cantidad"></i>
-                                <input type="text" value="2" class="carrito-item-cantidad" disabled>
-                                <i class="bi bi-plus-lg sumar-cantidad"></i>
-                            </div>
-                        </div>
-                        <span class="carrito-item-precio">80€</span>
+            echo "<div class='offcanvas-body'>
+            <div class='carrito-items'>";
+
+            foreach ($data as $product) {
+                echo "<div class='carrito-item'>
+                <img src='../img/{$product['nombre']}.png' alt='' width='80px'>
+                <div class='carrito-item-details'>
+                    <span class='carrito-item-title'>{$product['nombreProducto']}</span>
+                    <div class='selector-cantidad'>
+                        <i class='bi bi-dash-lg restar-cantidad'></i>
+                        <input type='text' value='{$product['cantidad']}' class='carrito-item-cantidad' disabled>
+                        <i class='bi bi-plus-lg sumar-cantidad'></i>
                     </div>
-                    <span class="btn-eliminar">
-                        <i class="bi bi-trash-fill"></i>
-                    </span>
                 </div>
-            </div>
+                <span class='carrito-item-precio'>{$product['precio']}€</span>
+                </div>
+                <span class='btn-eliminar'>
+                    <i class='bi bi-trash-fill'></i>
+                </span>
+            </div>";
+            }
+
+            echo "</div></div>";
+            ?>
+
             <div class="carrito-total">
                 <div class="row">
                     <strong>Tu total</strong>

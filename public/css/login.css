@@ -1,5 +1,5 @@
 :root {
-    --main: rgb(249, 130, 213);
+    --main: #f982d5;
 }
 
 * {
@@ -26,7 +26,8 @@ main {
     padding: 10px 20px;
     display: flex;
     justify-content: center;
-    background: #ecb4bb;
+    backdrop-filter: blur(1rem);
+    background-color: rgba(236, 180, 187, 0.6);
     border-radius: 25px;
 }
 
@@ -84,7 +85,10 @@ main {
 .container__login-signup div {
     width: 100%;
     padding: 80px 20px;
-    background: #c7afcf;
+    /*background: #c7afcf;*/
+    backdrop-filter: blur(1rem);
+    background-color: rgba(245, 245, 198, 0.5);
+    box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
     position: absolute;
     border-radius: 25px;
 }

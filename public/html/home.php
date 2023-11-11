@@ -56,7 +56,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="./cart.php" class="sidebar-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <a href="../html/cart.php" class="sidebar-link">
                             <i class="bi bi-cart pe-2"></i>Cart
                         </a>
                     </li>

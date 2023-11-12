@@ -20,14 +20,13 @@ class Cart
     static function getAll($link)
     {
         try {
-            $query = "SELECT * FROM carrito";
+            $query = "SELECT c.*, p.nombre, p.precio, p.foto FROM carrito c
+            JOIN productos p ON c.idProducto = p.idProducto";
             $result = $link->prepare($query);
             $result->execute();
-            return $result;
+            return $result->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
-            //require "vistas/mensaje.php";
-            die();
+            die("¡Error!: " . $e->getMessage());
         }
     }
 

@@ -6,11 +6,10 @@ include "./clases/Cart.php";
 $base = new Bd();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $dato = Cart::getAll($base->link);
-        $dato->setFetchMode(PDO::FETCH_ASSOC);
-        header("HTTP/1.1 200 OK");
-        echo json_encode($dato->fetchAll());
-        exit();
+    $datos = Cart::getAll($base->link);
+    header("HTTP/1.1 200 OK");
+    echo json_encode($datos);
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

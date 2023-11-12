@@ -1,36 +1,36 @@
-document.getElementById('carritoLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Evita que el enlace redireccione
+fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
 
-    fetch('http://localhost/ruizHelena_Proyecto1/controller/verCarrito.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
+        imprimirCarrito(data);
+    })
+    .catch(error => {
+        console.error('Error al llamar al servicio del carrito:', error);
+    });
 
-            imprimirCarrito(data);
-        })
-        .catch(error => {
-            console.error('Error al llamar al servicio del carrito:', error);
-        });
-});
 
 function imprimirCarrito(data) {
-    const cartContainer = document.getElementById('cart-container');
-    const cartBottom = document.getElementById('cart-bottom');
-
+    let cartContainer = document.getElementById('cart-container');
+    let cartBottom = document.getElementById('cart-bottom');
+    if (!cartContainer || !cartBottom) {
+        console.error('No se encontraron los elementos del carrito.');
+        return;
+    }
     cartContainer.innerHTML = '';
     cartBottom.innerHTML = '';
 
     if (data.length === 0) {
-        const mensajeVacio = document.createElement('p');
+        let mensajeVacio = document.createElement('p');
         mensajeVacio.textContent = 'No hay productos en el carrito.';
         cartContainer.appendChild(mensajeVacio);
     } else {
-        const table = document.createElement('table');
+        let table = document.createElement('table');
         table.width = '100%';
         table.innerHTML = `
             <thead>
@@ -47,15 +47,15 @@ function imprimirCarrito(data) {
             </tbody>
         `;
 
-        const tbody = table.querySelector('tbody');
+        let tbody = table.querySelector('tbody');
 
         data.forEach(product => {
-            const tr = document.createElement('tr');
+            let tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><a href="#"><i class="bi bi-trash3-fill"></i></a></td>
-                <td><img src="../img/${product['nombre']}.png" alt=""></td>
+                <td><img src="${product['foto']}" alt=""></td>
                 <td>
-                    <h5>${product['nombreProducto']}</h5>
+                    <h5>${product['nombre']}</h5>
                 </td>
                 <td>
                     <h5>${product['precio']}€</h5>
@@ -70,7 +70,7 @@ function imprimirCarrito(data) {
 
         cartContainer.appendChild(table);
 
-        const totalContainer = document.createElement('div');
+        let totalContainer = document.createElement('div');
         totalContainer.classList.add('total', 'col-lg-6', 'col-md-6', 'col-12', 'mb-4');
         totalContainer.innerHTML = `
             <div>

@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif!important;
     margin: 0;
 }
 
@@ -9,7 +9,7 @@ div.wrapper a {
 
 a {
     cursor: pointer;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif!important;
 }
 
 li {

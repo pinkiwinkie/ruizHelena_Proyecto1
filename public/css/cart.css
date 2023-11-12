@@ -95,3 +95,9 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.container_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

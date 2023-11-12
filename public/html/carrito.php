@@ -89,73 +89,7 @@
             </nav>
 
             <h1 class="title text-center py-4">Tu carrito</h1>
-            <section id="cart-container" class="container my-5">
-                <table width="100%">
-                    <thead>
-                        <tr>
-                            <td>Eliminar</td>
-                            <td>Imagen</td>
-                            <td>Producto</td>
-                            <td>Precio</td>
-                            <td>Cantidad</td>
-                            <td>Total</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="#"><i class="bi bi-trash3-fill"></i></a></td>
-                            <td><img src="../img/1881.png" alt=""></td>
-                            <td>
-                                <h5>1881</h5>
-                            </td>
-                            <td>
-                                <h5>15€</h5>
-                            </td>
-                            <td><input class="w-25 pl-1" value="1" min="1" type="number"></td>
-                            <td>
-                                <h5>30€</h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="#"><i class="bi bi-trash3-fill"></i></a></td>
-                            <td><img src="../img/littleKissme.png" alt=""></td>
-                            <td>
-                                <h5>1881</h5>
-                            </td>
-                            <td>
-                                <h5>15€</h5>
-                            </td>
-                            <td><input class="w-25 pl-1" value="1" min="1" type="number"></td>
-                            <td>
-                                <h5>30€</h5>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            <section id="cart-bottom" class="container">
-                <div class="row">
-                    <div class="total col-lg-6 col-md-6 col-12 mb-4">
-                        <div>
-                            <h5>Total del carrito</h5>
-                            <div class="d-flex justify-content-between">
-                                <h6>Subtotal</h6>
-                                <p>215€</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <h6>Envío</h6>
-                                <p>215€</p>
-                            </div>
-                            <hr class="hr">
-                            <div class="d-flex justify-content-between">
-                                <h6>Total</h6>
-                                <p>215€</p>
-                            </div>
-                            <button class="m-2 btn btn-card">Pagar</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
         </div>
     </div>
 

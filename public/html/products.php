@@ -112,7 +112,7 @@
                                         <p class='card-text'>" . $product->precio . "€</p>
                                     </div>
                                     <div class='card-footer'>
-                                        <a href='#' class='btn btn-card'>Añadir al carrito</a>
+                                        <a href='../controller/verCarrito.php?idProducto=". $product->idProducto ."' class='btn btn-card'>Añadir al carrito</a>
                                         <a href='../controller/detalles.php?idProducto=". $product->idProducto ."' class='btn btn-card'>Ver detalles</a>
                                     </div>
                                 </div>

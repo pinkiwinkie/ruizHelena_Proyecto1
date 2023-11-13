@@ -20,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    $idProducto = $_GET['idProducto'];
+    $idCarrito = $_GET['idCarrito'];
         
-    $cart = new Cart($idCarrito, $idUnico, $dniCliente, $idProducto,$cantdidad);
+    $cart = new Cart($idCarrito, 0, 0, 0, 0);
     
     if ($cart->deleteLineaCarrito($base->link)) {
         http_response_code(200); 

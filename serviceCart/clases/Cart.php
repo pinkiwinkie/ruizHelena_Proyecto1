@@ -8,7 +8,7 @@ class Cart
     private $idProducto;
     private $cantidad;
 
-    function __construct($idCarrito, $idUnico, $idProducto = "", $cantidad = "",$dniCliente = "")
+    function __construct($idCarrito, $idUnico, $idProducto = "", $cantidad = "", $dniCliente = "")
     {
         $this->idCarrito = $idCarrito;
         $this->idUnico = $idUnico;
@@ -30,8 +30,8 @@ class Cart
         }
     }
 
-    function getByDni(){
-        
+    function getByDni()
+    {
     }
 
     function insertarLineaCarrito($link)
@@ -57,9 +57,9 @@ class Cart
     function deleteLineaCarrito($link)
     {
         try {
-            $query = "DELETE FROM carrito WHERE idProducto = :idProducto";
+            $query = "DELETE FROM carrito WHERE idCarrito = :idCarrito";
             $result = $link->prepare($query);
-            $result->bindParam(':idProducto', $this->idProducto);
+            $result->bindParam(':idCarrito', $this->idCarrito);
             return $result->execute();
         } catch (PDOException $e) {
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";

@@ -14,14 +14,43 @@ fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
         console.error('Error al llamar al servicio del carrito:', error);
     });
 
+function eliminarProducto(idCarrito) {
+    fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            if (data && data.message === "Eliminación exitosa") {
+                return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
+            } else {
+                throw new Error('Error al eliminar el producto: Respuesta inesperada del servidor');
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor al obtener datos actualizados del carrito: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            imprimirCarrito(data);
+            alert('Producto eliminado exitosamente.');
+        })
+        .catch(error => {
+            console.error('Error al eliminar el producto:', error);
+        });
+}
 
 function imprimirCarrito(data) {
     let cartContainer = document.getElementById('cart-container');
     let cartBottom = document.getElementById('cart-bottom');
-    if (!cartContainer || !cartBottom) {
-        console.error('No se encontraron los elementos del carrito.');
-        return;
-    }
+
     cartContainer.innerHTML = '';
     cartBottom.innerHTML = '';
 
@@ -52,7 +81,7 @@ function imprimirCarrito(data) {
         data.forEach(product => {
             let tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><a href="#"><i class="bi bi-trash3-fill"></i></a></td>
+                <td class="delete-btn"><a href="#"><i class="bi bi-trash3-fill"></i></a></td>
                 <td><img src="${product['foto']}" alt=""></td>
                 <td>
                     <h5>${product['nombre']}</h5>
@@ -66,9 +95,16 @@ function imprimirCarrito(data) {
                 </td>
             `;
             tbody.appendChild(tr);
+            let deleteBtn = tr.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', function() {
+                // Llama a la función para eliminar
+                eliminarProducto(product['idCarrito']);
+            });
         });
 
         cartContainer.appendChild(table);
+
+        let { subtotal, costoEnvio, total } = calcularSubtotal(data);
 
         let totalContainer = document.createElement('div');
         totalContainer.classList.add('total', 'col-lg-6', 'col-md-6', 'col-12', 'mb-4');
@@ -77,16 +113,16 @@ function imprimirCarrito(data) {
                 <h5>Total del carrito</h5>
                 <div class="d-flex justify-content-between">
                     <h6>Subtotal</h6>
-                    <p>${calcularSubtotal(data)}€</p>
+                    <p>${subtotal}€</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <h6>Envío</h6>
-                    <p>0€</p>
+                    <p>${costoEnvio}</p>
                 </div>
                 <hr class="hr">
                 <div class="d-flex justify-content-between">
                     <h6>Total</h6>
-                    <p>${calcularSubtotal(data)}€</p>
+                    <p>${total}€</p>
                 </div>
                 <div class="container_buttons">
                     <button class="m-2 btn btn-card">Actualizar carrito</button>
@@ -100,7 +136,16 @@ function imprimirCarrito(data) {
 }
 
 function calcularSubtotal(data) {
-    return data.reduce((subtotal, product) => {
+    let subtotal = data.reduce((subtotal, product) => {
         return subtotal + parseFloat(product['precio']) * parseInt(product['cantidad']);
-    }, 0).toFixed(2);
+    }, 0);
+
+    let costoEnvio = 2.50;
+    let total = subtotal + costoEnvio;
+
+    return {
+        subtotal: subtotal.toFixed(2),
+        costoEnvio: costoEnvio.toFixed(2),
+        total: total.toFixed(2)
+    };
 }

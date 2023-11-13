@@ -1,27 +1,19 @@
-// Asumiendo que tienes una función que obtiene la información del usuario logueado
-// Puedes ajustar esto según tu implementación real
-const idUnico = obtenerIdUnico();
+fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
 
-// Verificar si el usuario está logueado antes de realizar la llamada al servicio del carrito
-if (idUnico) {
-    fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
+        imprimirCarrito(data);
+    })
+    .catch(error => {
+        console.error('Error al llamar al servicio del carrito:', error);
+    });
 
-            imprimirCarrito(data);
-        })
-        .catch(error => {
-            console.error('Error al llamar al servicio del carrito:', error);
-        });
-} else {
-    mostrarMensajeVacio();
-}
 
 function mostrarMensajeVacio() {
     let cartContainer = document.getElementById('cart-container');
@@ -109,7 +101,6 @@ function imprimirCarrito(data) {
             tbody.appendChild(tr);
             let deleteBtn = tr.querySelector('.delete-btn');
             deleteBtn.addEventListener('click', function() {
-                // Llama a la función para eliminar
                 eliminarProducto(product['idCarrito']);
             });
         });

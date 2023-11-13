@@ -68,4 +68,20 @@ class Cart
             die();
         }
     }
+
+    function updateCarrito($link)
+    {
+        try{
+            $query= "UPDATE carrito SET cantidad = :cantidad WHERE idProducto = :idProducto";
+            $result =$link->prepare($query);
+            $result->bindParam(':cantidad', $this->cantidad);
+            $result->bindParam(':idProducto', $this->idProducto);
+            return $result->execute();
+        }catch (PDOException $e) {
+            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
+            echo $dato;
+            //require "vistas/mensaje.php";
+            die();
+        }
+    }
 }

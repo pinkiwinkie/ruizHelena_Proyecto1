@@ -32,3 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
         echo json_encode(["message" => "Error en la eliminación"]);
     }
 }
+
+if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+    $idProducto = $_GET['idProducto'];
+    $cantidad = $_GET['cantidad'];
+    
+    $cart = new Cart(0,0,$idProducto,$cantidad,0);
+
+    if($cart->updateCarrito($base->link)){
+        http_response_code(200); 
+        echo json_encode(["message" => "update exitoso"]);
+    }else {
+        http_response_code(500); 
+        echo json_encode(["message" => "Error en el update"]);
+    }
+}

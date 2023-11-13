@@ -1,3 +1,6 @@
+var arrayCantidad = [];
+var arrayIdCarrito = [];
+
 fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
     .then(response => {
         if (!response.ok) {
@@ -14,7 +17,6 @@ fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
         console.error('Error al llamar al servicio del carrito:', error);
     });
 
-
 function mostrarMensajeVacio() {
     let cartContainer = document.getElementById('cart-container');
     cartContainer.innerHTML = '<p>No hay productos en tu carrito.</p>';
@@ -25,9 +27,6 @@ function eliminarProducto(idCarrito) {
             method: 'DELETE',
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
-            }
             return response.json();
         })
         .then(data => {
@@ -39,9 +38,6 @@ function eliminarProducto(idCarrito) {
             }
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error en la respuesta del servidor al obtener datos actualizados del carrito: ${response.statusText}`);
-            }
             return response.json();
         })
         .then(data => {
@@ -93,11 +89,14 @@ function imprimirCarrito(data) {
                 <td>
                     <h5>${product['precio']}€</h5>
                 </td>
-                <td><input class="w-25 pl-1" value="${product['cantidad']}" min="1" type="number"></td>
+                <td><input class="w-25 pl-1 cantidad-product" value="${product['cantidad']}" min="1" type="number"></td>
                 <td>
                     <h5>${(parseFloat(product['precio']) * parseInt(product['cantidad'])).toFixed(2)}€</h5>
                 </td>
             `;
+
+            arrayIdCarrito.push(product['idCarrito']);
+
             tbody.appendChild(tr);
             let deleteBtn = tr.querySelector('.delete-btn');
             deleteBtn.addEventListener('click', function() {
@@ -128,14 +127,52 @@ function imprimirCarrito(data) {
                     <p>${total}€</p>
                 </div>
                 <div class="container_buttons">
-                    <button class="m-2 btn btn-card">Actualizar carrito</button>
+                    <button class="m-2 btn btn-card update-button">Actualizar carrito</button>
                     <button class="m-2 btn btn-card">Pagar</button>
                 </div>                            
             </div>
         `;
 
         cartBottom.appendChild(totalContainer);
+        let updateBtn = cartBottom.querySelector('.update-button');
+        updateBtn.addEventListener('click', function() {
+            updateCarrito();
+        });
     }
+}
+
+function updateCarrito() {
+    let cantidadProduct = document.querySelectorAll('.cantidad-product');
+
+    cantidadProduct.forEach(element => {
+        arrayCantidad.push(element.value);
+    });
+
+    for (let i = 0; i < arrayIdCarrito.length; i++) {
+        fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${arrayIdCarrito[i]}&cantidad=${arrayCantidad[i]}`, {
+                method: 'PUT',
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.message === "update exitoso") {
+                    return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
+                } else {
+                    throw new Error('Error al actualizar el carrito: Respuesta inesperada del servidor');
+                }
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                imprimirCarrito(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
 }
 
 function calcularSubtotal(data) {

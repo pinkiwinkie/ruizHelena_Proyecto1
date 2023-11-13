@@ -72,10 +72,10 @@ class Cart
     function updateCarrito($link)
     {
         try{
-            $query= "UPDATE carrito SET cantidad = :cantidad WHERE idProducto = :idProducto";
+            $query= "UPDATE carrito SET cantidad = :cantidad WHERE idCarrito = :idCarrito";
             $result =$link->prepare($query);
             $result->bindParam(':cantidad', $this->cantidad);
-            $result->bindParam(':idProducto', $this->idProducto);
+            $result->bindParam(':idCarrito', $this->idCarrito);
             return $result->execute();
         }catch (PDOException $e) {
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";

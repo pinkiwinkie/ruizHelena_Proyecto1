@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT'){
-    $idProducto = $_GET['idProducto'];
+    $idCarrito = $_GET['idCarrito'];
     $cantidad = $_GET['cantidad'];
     
-    $cart = new Cart(0,0,$idProducto,$cantidad,0);
+    $cart = new Cart($idCarrito,0,0,$cantidad,0);
 
     if($cart->updateCarrito($base->link)){
         http_response_code(200); 

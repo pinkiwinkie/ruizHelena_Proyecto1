@@ -29,7 +29,7 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="home.php" class="sidebar-link">
+                        <a href="../public/html/home.php" class="sidebar-link">
                             <i class="bi bi-house pe-2"></i>Home
                         </a>
                     </li>
@@ -42,7 +42,7 @@
                                 <a href="#" class="sidebar-link">About</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Products</a>
+                                <a href="./principal.php" class="sidebar-link">Products</a>
                             </li>
                         </ul>
                     </li>
@@ -52,13 +52,13 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../html/login.php" class="sidebar-link">Login</a>
+                                <a href="../public/html/login.php" class="sidebar-link">Login</a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="./cart.php" class="sidebar-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                            <i class="bi bi-cart pe-2"></i>Cart
+                        <a href="./verCarrito.php" class="sidebar-link" id="carritoLink">
+                            <i class="bi bi-cart pe-2"></i>Carrito
                         </a>
                     </li>
                 </ul>
@@ -84,7 +84,7 @@
                 <button class="btn" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="index.php">FRAGANCE</a>
+                <a href="../public/html/home.php">FRAGANCE</a>
                 <div class="nameUsuario">Hola, <?php echo isset($_COOKIE['nombre']) ? $_COOKIE['nombre'] : 'Usuario'; ?></div>
             </nav>
 

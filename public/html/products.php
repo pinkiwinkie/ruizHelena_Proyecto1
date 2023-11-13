@@ -99,11 +99,11 @@
             </nav>
             <!-- Show products -->
             <div class="container">
-            <h1 class="title text-center py-4">Nuestros productos</h1>
+                <h1 class="title text-center py-4">Nuestros productos</h1>
                 <div class="row">
                     <?php
-                        foreach ($data as $product) {
-                            echo "
+                    foreach ($data as $product) {
+                        echo "
                             <div class='col-3 d-flex '>
                                 <div class='card card-home mb-3 m-2 cb1 text-center' style='margin: 10px;'>
                                     <img src='" . $product->foto . "' class='card-img-top' alt='...'>
@@ -112,12 +112,15 @@
                                         <p class='card-text'>" . $product->precio . "€</p>
                                     </div>
                                     <div class='card-footer'>
-                                        <a href='../controller/verCarrito.php?idProducto=". $product->idProducto ."' class='btn btn-card'>Añadir al carrito</a>
-                                        <a href='../controller/detalles.php?idProducto=". $product->idProducto ."' class='btn btn-card'>Ver detalles</a>
+                                        <form action='../controller/verCarrito.php' method='post'>
+                                            <input type='hidden' name='idProducto' value='" . $product->idProducto . "'>
+                                            <button type='submit' class='btn btn-card'>Añadir al carrito</button>
+                                        </form>
+                                        <a href='../controller/detalles.php?idProducto=" . $product->idProducto . "' class='btn btn-card'>Ver detalles</a>
                                     </div>
                                 </div>
                             </div>";
-                        }
+                    }
                     ?>
                 </div>
             </div>
@@ -126,4 +129,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="../public/js/main.js"></script>
 </body>
+
 </html>

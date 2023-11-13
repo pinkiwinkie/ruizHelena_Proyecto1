@@ -1,18 +1,32 @@
-fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
+// Asumiendo que tienes una función que obtiene la información del usuario logueado
+// Puedes ajustar esto según tu implementación real
+const idUnico = obtenerIdUnico();
 
-        imprimirCarrito(data);
-    })
-    .catch(error => {
-        console.error('Error al llamar al servicio del carrito:', error);
-    });
+// Verificar si el usuario está logueado antes de realizar la llamada al servicio del carrito
+if (idUnico) {
+    fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+
+            imprimirCarrito(data);
+        })
+        .catch(error => {
+            console.error('Error al llamar al servicio del carrito:', error);
+        });
+} else {
+    mostrarMensajeVacio();
+}
+
+function mostrarMensajeVacio() {
+    let cartContainer = document.getElementById('cart-container');
+    cartContainer.innerHTML = '<p>No hay productos en tu carrito.</p>';
+}
 
 function eliminarProducto(idCarrito) {
     fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}`, {
@@ -55,9 +69,7 @@ function imprimirCarrito(data) {
     cartBottom.innerHTML = '';
 
     if (data.length === 0) {
-        let mensajeVacio = document.createElement('p');
-        mensajeVacio.textContent = 'No hay productos en el carrito.';
-        cartContainer.appendChild(mensajeVacio);
+        mostrarMensajeVacio();
     } else {
         let table = document.createElement('table');
         table.width = '100%';

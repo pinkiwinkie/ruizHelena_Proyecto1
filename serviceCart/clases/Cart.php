@@ -30,10 +30,6 @@ class Cart
         }
     }
 
-    function getByDni()
-    {
-    }
-
     function insertarLineaCarrito($link)
     {
         try {

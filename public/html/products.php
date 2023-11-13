@@ -112,10 +112,6 @@
                                         <p class='card-text'>" . $product->precio . "€</p>
                                     </div>
                                     <div class='card-footer'>
-                                        <form action='../controller/verCarrito.php' method='post'>
-                                            <input type='hidden' name='idProducto' value='" . $product->idProducto . "'>
-                                            <button type='submit' class='btn btn-card'>Añadir al carrito</button>
-                                        </form>
                                         <a href='../controller/detalles.php?idProducto=" . $product->idProducto . "' class='btn btn-card'>Ver detalles</a>
                                     </div>
                                 </div>

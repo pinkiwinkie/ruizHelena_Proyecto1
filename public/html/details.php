@@ -90,27 +90,30 @@
                 <?php
                 if ($data) {
                     echo "
-            <div class='row'>
-                <div class='col-md-12 d-flex justify-content-center'>
-                    <div class='card card-home mb-3 m-5 cb1 text-center'>
-                        <div class='row g-0'>
-                            <div class='col-md-5'>
-                                <img src='" . $data->foto . "' class='img-fluid rounded-start' alt='...'>
-                            </div>
-                            <div class='col-md-5'>
-                                <div class='card-body'>
-                                    <h4 class='card-title'>" . $data->nombre . "</h4>
-                                    <h6 class='card-subtitle m-3'>" . $data->marca . "</h6>
-                                    <p class='card-text'>" . $data->descripcion . "</p>
-                                    <p class='card-text'>" . $data->precio . "€</p>
-                                    <input type='number' min='1' name='' value='1' id=''>
-                                    <a href='#' class='btn btn-card m-3'>Comprar</a>
+                    <div class='row'>
+                        <div class='col-md-12 d-flex justify-content-center'>
+                            <div class='card card-home mb-3 m-5 cb1 text-center'>
+                                <div class='row g-0'>
+                                    <div class='col-md-5'>
+                                        <img src='" . $data->foto . "' class='img-fluid rounded-start' alt='...'>
+                                    </div>
+                                    <div class='col-md-5'>
+                                        <div class='card-body'>
+                                            <h4 class='card-title'>" . $data->nombre . "</h4>
+                                            <h6 class='card-subtitle m-3'>" . $data->marca . "</h6>
+                                            <p class='card-text'>" . $data->descripcion . "</p>
+                                            <p class='card-text'>" . $data->precio . "€</p>
+                                            <form action='../controller/verCarrito.php' method='post'>
+                                                <input type='number' min='1' name='cantidad' value='1' id=''>
+                                                <input type='hidden' name='idProducto' value='" . $data->idProducto . "'>
+                                                <button type='submit' class='btn btn-card m-2'>Comprar</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>";
+                    </div>";
                 } else {
                     echo "Los datos no están disponibles.";
                 }

@@ -1,66 +1,69 @@
 var arrayCantidad = [];
 var arrayIdCarrito = [];
 
-fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
-        }
+fetch("http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php")
+    .then((response) => {
         return response.json();
     })
-    .then(data => {
+    .then((data) => {
         console.log(data);
 
         imprimirCarrito(data);
     })
-    .catch(error => {
-        console.error('Error al llamar al servicio del carrito:', error);
+    .catch((error) => {
+        console.error("Error al llamar al servicio del carrito:", error);
     });
 
 function mostrarMensajeVacio() {
-    let cartContainer = document.getElementById('cart-container');
-    cartContainer.innerHTML = '<p>No hay productos en tu carrito.</p>';
+    let cartContainer = document.getElementById("cart-container");
+    cartContainer.innerHTML = "<p>No hay productos en tu carrito.</p>";
 }
 
 function eliminarProducto(idCarrito) {
-    fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}`, {
-            method: 'DELETE',
-        })
-        .then(response => {
+    fetch(
+            `http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}`, {
+                method: "DELETE",
+            }
+        )
+        .then((response) => {
             return response.json();
         })
-        .then(data => {
+        .then((data) => {
             console.log(data);
             if (data && data.message === "Eliminación exitosa") {
-                return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
+                return fetch(
+                    "http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php"
+                );
             } else {
-                throw new Error('Error al eliminar el producto: Respuesta inesperada del servidor');
+                throw new Error(
+                    "Error al eliminar el producto: Respuesta inesperada del servidor"
+                );
             }
         })
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .then(data => {
+        .then((data) => {
             imprimirCarrito(data);
-            alert('Producto eliminado exitosamente.');
+            alert("Producto eliminado exitosamente.");
         })
-        .catch(error => {
-            console.error('Error al eliminar el producto:', error);
+        .catch((error) => {
+            console.error("Error al eliminar el producto:", error);
         });
 }
 
 function imprimirCarrito(data) {
-    let cartContainer = document.getElementById('cart-container');
-    let cartBottom = document.getElementById('cart-bottom');
+    let cartContainer = document.getElementById("cart-container");
+    let cartBottom = document.getElementById("cart-bottom");
 
-    cartContainer.innerHTML = '';
-    cartBottom.innerHTML = '';
+    cartContainer.innerHTML = "";
+    cartBottom.innerHTML = "";
 
     if (data.length === 0) {
         mostrarMensajeVacio();
     } else {
-        let table = document.createElement('table');
-        table.width = '100%';
+        let table = document.createElement("table");
+        table.width = "100%";
         table.innerHTML = `
             <thead>
                 <tr>
@@ -76,31 +79,32 @@ function imprimirCarrito(data) {
             </tbody>
         `;
 
-        let tbody = table.querySelector('tbody');
+        let tbody = table.querySelector("tbody");
 
-        data.forEach(product => {
-            let tr = document.createElement('tr');
+        data.forEach((product) => {
+            let tr = document.createElement("tr");
             tr.innerHTML = `
                 <td class="delete-btn"><a href="#"><i class="bi bi-trash3-fill"></i></a></td>
-                <td><img src="${product['foto']}" alt=""></td>
+                <td><img src="${product["foto"]}" alt=""></td>
                 <td>
-                    <h5>${product['nombre']}</h5>
+                    <h5>${product["nombre"]}</h5>
                 </td>
                 <td>
-                    <h5>${product['precio']}€</h5>
+                    <h5>${product["precio"]}€</h5>
                 </td>
-                <td><input class="w-25 pl-1 cantidad-product" value="${product['cantidad']}" min="1" type="number"></td>
+                <td><input class="w-25 pl-1 cantidad-product" value="${product["cantidad"]}" min="1" type="number"></td>
                 <td>
-                    <h5>${(parseFloat(product['precio']) * parseInt(product['cantidad'])).toFixed(2)}€</h5>
+                    <h5>${(
+                      parseFloat(product["precio"]) * parseInt(product["cantidad"])).toFixed(2)}€</h5>
                 </td>
             `;
 
-            arrayIdCarrito.push(product['idCarrito']);
+            arrayIdCarrito.push(product["idCarrito"]);
 
             tbody.appendChild(tr);
-            let deleteBtn = tr.querySelector('.delete-btn');
-            deleteBtn.addEventListener('click', function() {
-                eliminarProducto(product['idCarrito']);
+            let deleteBtn = tr.querySelector(".delete-btn");
+            deleteBtn.addEventListener("click", function() {
+                eliminarProducto(product["idCarrito"]);
             });
         });
 
@@ -108,8 +112,14 @@ function imprimirCarrito(data) {
 
         let { subtotal, costoEnvio, total } = calcularSubtotal(data);
 
-        let totalContainer = document.createElement('div');
-        totalContainer.classList.add('total', 'col-lg-6', 'col-md-6', 'col-12', 'mb-4');
+        let totalContainer = document.createElement("div");
+        totalContainer.classList.add(
+            "total",
+            "col-lg-6",
+            "col-md-6",
+            "col-12",
+            "mb-4"
+        );
         totalContainer.innerHTML = `
             <div>
                 <h5>Total del carrito</h5>
@@ -134,58 +144,97 @@ function imprimirCarrito(data) {
         `;
 
         cartBottom.appendChild(totalContainer);
-        let updateBtn = cartBottom.querySelector('.update-button');
-        updateBtn.addEventListener('click', function() {
+        let updateBtn = cartBottom.querySelector(".update-button");
+        updateBtn.addEventListener("click", function() {
             updateCarrito();
         });
     }
 }
 
 function updateCarrito() {
-    let cantidadProduct = document.querySelectorAll('.cantidad-product');
+    let cantidadProduct = document.querySelectorAll(".cantidad-product");
 
-    cantidadProduct.forEach(element => {
+    cantidadProduct.forEach((element) => {
         arrayCantidad.push(element.value);
     });
 
     for (let i = 0; i < arrayIdCarrito.length; i++) {
-        fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${arrayIdCarrito[i]}&cantidad=${arrayCantidad[i]}`, {
-                method: 'PUT',
-            })
-            .then(response => {
+        fetch(
+                `http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${arrayIdCarrito[i]}&cantidad=${arrayCantidad[i]}`, {
+                    method: "PUT",
+                }
+            )
+            .then((response) => {
                 return response.json();
             })
-            .then(data => {
+            .then((data) => {
                 if (data && data.message === "update exitoso") {
-                    return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
+                    return fetch(
+                        "http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php"
+                    );
                 } else {
-                    throw new Error('Error al actualizar el carrito: Respuesta inesperada del servidor');
+                    throw new Error(
+                        "Error al actualizar el carrito: Respuesta inesperada del servidor"
+                    );
                 }
             })
-            .then(response => {
+            .then((response) => {
                 return response.json();
             })
-            .then(data => {
+            .then((data) => {
                 imprimirCarrito(data);
             })
-            .catch(error => {
-                console.error('Error:', error);
+            .catch((error) => {
+                console.error("Error:", error);
             });
     }
-
 }
+
+function insertarProducto(idCarrito, idUnico, dniCliente, idProducto, cantidad) {
+    fetch("http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idCarrito: idCarrito,
+                idUnico: idUnico,
+                dniCliente: dniCliente,
+                idProducto: idProducto,
+                cantidad: cantidad,
+            }),
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(
+                    `Error en la respuesta del servidor: ${response.statusText}`
+                );
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            imprimirCarrito(data);
+        })
+        .catch((error) => {
+            console.error("Error al agregar el producto al carrito:", error);
+        });
+}
+
 
 function calcularSubtotal(data) {
     let subtotal = data.reduce((subtotal, product) => {
-        return subtotal + parseFloat(product['precio']) * parseInt(product['cantidad']);
+        return (
+            subtotal + parseFloat(product["precio"]) * parseInt(product["cantidad"])
+        );
     }, 0);
 
-    let costoEnvio = 2.50;
+    let costoEnvio = 2.5;
     let total = subtotal + costoEnvio;
 
     return {
         subtotal: subtotal.toFixed(2),
         costoEnvio: costoEnvio.toFixed(2),
-        total: total.toFixed(2)
+        total: total.toFixed(2),
     };
 }

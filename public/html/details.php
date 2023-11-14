@@ -106,6 +106,7 @@
                                             <form action='../controller/verCarrito.php' method='post'>
                                                 <input type='number' min='1' name='cantidad' value='1' id=''>
                                                 <input type='hidden' name='idProducto' value='" . $data->idProducto . "'>
+                                                <input type='hidden' name='source' value='form'>
                                                 <button type='submit' class='btn btn-card m-2'>Comprar</button>
                                             </form>
                                         </div>

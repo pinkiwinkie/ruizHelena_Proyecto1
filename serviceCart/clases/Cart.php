@@ -20,11 +20,14 @@ class Cart
     static function getAll($link)
     {
         try {
+            $query = "SELECT * FROM carrito";
             $query = "SELECT c.*, p.nombre, p.precio, p.foto FROM carrito c
-            JOIN productos p ON c.idProducto = p.idProducto";
+            LEFT JOIN productos p ON c.idProducto = p.idProducto
+            "; 
             $result = $link->prepare($query);
             $result->execute();
-            return $result->fetchAll(PDO::FETCH_ASSOC);
+            $resultados = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
         } catch (PDOException $e) {
             die("¡Error!: " . $e->getMessage());
         }
@@ -67,13 +70,13 @@ class Cart
 
     function updateCarrito($link)
     {
-        try{
-            $query= "UPDATE carrito SET cantidad = :cantidad WHERE idCarrito = :idCarrito";
-            $result =$link->prepare($query);
+        try {
+            $query = "UPDATE carrito SET cantidad = :cantidad WHERE idCarrito = :idCarrito";
+            $result = $link->prepare($query);
             $result->bindParam(':cantidad', $this->cantidad);
             $result->bindParam(':idCarrito', $this->idCarrito);
             return $result->execute();
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";
             echo $dato;
             //require "vistas/mensaje.php";

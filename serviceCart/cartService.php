@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $lineaCarrito = new Cart(0,$_POST['idUnico'], $_POST['dniCliente'], $_POST['idProducto'], $_POST['cantidad']);
+    $lineaCarrito = new Cart(0,$_POST['idUnico'], $_POST['idProducto'], $_POST['cantidad'], $_POST['dniCliente']);
     $lineaCarrito->insertarLineaCarrito($base->link);
     echo json_encode('insertado');
     exit();

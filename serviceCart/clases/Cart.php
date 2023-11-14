@@ -4,9 +4,9 @@ class Cart
 {
     private $idCarrito;
     private $idUnico;
-    private $dniCliente;
     private $idProducto;
     private $cantidad;
+    private $dniCliente;
 
     function __construct($idCarrito, $idUnico, $idProducto = "", $cantidad = "", $dniCliente = "")
     {
@@ -20,10 +20,9 @@ class Cart
     static function getAll($link)
     {
         try {
-            $query = "SELECT * FROM carrito";
             $query = "SELECT c.*, p.nombre, p.precio, p.foto FROM carrito c
             LEFT JOIN productos p ON c.idProducto = p.idProducto
-            "; 
+            ";
             $result = $link->prepare($query);
             $result->execute();
             $resultados = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -36,13 +35,12 @@ class Cart
     function insertarLineaCarrito($link)
     {
         try {
-            $query = "INSERT INTO carrito VALUES(:idCarrito, :idUnico, :dniCliente, :idProducto, :cantidad)";
+            $query = "INSERT INTO carrito (idUnico, idProducto, cantidad, dniCliente) VALUES (:idUnico, :idProducto, :cantidad, :dniCliente)";
             $result = $link->prepare($query);
-            $result->bindParam(':idCarrito', $this->idCarrito);
             $result->bindParam(':idUnico', $this->idUnico);
-            $result->bindParam(':dniCliente', $this->dniCliente);
             $result->bindParam(':idProducto', $this->idProducto);
             $result->bindParam(':cantidad', $this->cantidad);
+            $result->bindParam(':dniCliente', $this->dniCliente);
             $result->execute();
             return $result->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -52,6 +50,7 @@ class Cart
             die();
         }
     }
+
 
     function deleteLineaCarrito($link)
     {

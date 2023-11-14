@@ -100,7 +100,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-4">Light blue</h5>
                                         <p class="card-text">Una fragancia florida y frutal con salida de notas frescas y refinadas (manzana Granny Smith, cedro de Sicilia y jacintos silvestres). El corazón, muy femenino, se compone de jazmín, rosa blanca y bambú. El fondo amaderado y suave está constituido por madera de cedro, ámbar y almizcles.</p>
-                                        <a href="#" class="btn btn-card">Añadir al carrito</a>
+                                        <a href="../../controller/detalles.php?idProducto=2" class="btn btn-card">Ver detalles</a>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-4">Escalè a portofino</h5>
                                         <p class="card-text">Un agua hespéride que se abre con “una farándula de cítricos”. La fragancia desvela luego notas de almendra amarga, de azahar, de bayas de enebro y toques amaderados de ciprés y de cedro. Un crucero olfativo en tierra italiana.</p>
-                                        <a href="#" class="btn btn-card">Añadir al carrito</a>
+                                        <a href="../../controller/detalles.php?idProducto=3" class="btn btn-card">Ver detalles</a>
                                     </div>
                                 </div>
                             </div>

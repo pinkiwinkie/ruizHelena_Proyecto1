@@ -177,17 +177,17 @@ INSERT INTO `productos` (`idProducto`, `nombre`, `descripcion`, `foto`, `marca`,
 CREATE TABLE `carrito` (
   `idCarrito` int(6) NOT NULL,
   `idUnico` int(6) NOT NULL,
-  `dniCliente` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
   `idProducto` int(6) NOT NULL,
-  `cantidad` int(99) DEFAULT NULL
+  `cantidad` int(99) DEFAULT NULL,
+  `dniCliente` varchar(9) COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `carrito`
 --
-INSERT INTO `carrito` (`idCarrito`, `idUnico`, `dniCliente`, `idProducto`, `cantidad`) VALUES
-(1, 1, '10', 1, 2),
-(2, 2, '10', 2, 3);
+INSERT INTO `carrito` (`idCarrito`, `idUnico`, `idProducto`, `cantidad`, `dniCliente`) VALUES
+(1, 1, 1, 2, '10'),
+(2, 2, 2, 3, '10');
 --
 -- Índices para tablas volcadas
 --

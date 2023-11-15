@@ -4,11 +4,9 @@ include "../public/html/carrito.php";
 echo '<script src="../public/js/carritoFetch.js"></script>';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Verificar si proviene del formulario
     if (isset($_POST['source']) && $_POST['source'] == 'form') {
         echo '<script>alert("Formulario")</script>';
         if (isset($_POST['idProducto']) && isset($_POST['cantidad'])) {
-            // Recupera los datos
             $idProducto = $_POST['idProducto'];
             $cantidad = $_POST['cantidad'];
             $dniCliente = $_COOKIE['dni'];
@@ -23,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
     }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    // Verificar si proviene del enlace
     if (isset($_GET['source']) && $_GET['source'] == 'link') {
         echo '<script>alert("link")</script>';
     }

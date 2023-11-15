@@ -216,7 +216,7 @@ function updateCarrito() {
                 return response.json();
             })
             .then(data => {
-                if (data && data.message === "update exitoso") {
+                if (data) {
                     return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
                 } else {
                     throw new Error('Error al actualizar el carrito: Respuesta inesperada del servidor');
@@ -226,11 +226,11 @@ function updateCarrito() {
                 return response.json();
             })
             .then(data => {
+                console.log(data);
                 imprimirCarrito(data);
             })
             .catch(error => {
                 console.error('Error:', error);
             });
     }
-
 }

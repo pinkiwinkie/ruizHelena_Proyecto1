@@ -88,7 +88,7 @@ class Cart
     function updateCarrito($link)
     {
         try {
-            $query = "UPDATE carrito SET cantidad = :cantidad WHERE idCarrito = :idCarrito";
+            $query = "UPDATE carrito SET cantidad = :cantidad WHERE idCarrito = :idCarrito ";
             $result = $link->prepare($query);
             $result->bindParam(':cantidad', $this->cantidad);
             $result->bindParam(':idCarrito', $this->idCarrito);

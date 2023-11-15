@@ -13,20 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit();
 }
 
-/*if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $lineaCarrito = new Cart(0, $_POST['idUnico'], $_POST['idProducto'], $_POST['cantidad'], $_POST['dniCliente']);
-    $lineaCarrito->insertarLineaCarrito($base->link);
-    
-    // Obtén la fila recién insertada después de la inserción
-    $idCarritoInsertado = $base->link->lastInsertId();
-    $filaInsertada = $lineaCarrito->obtenerLineaCarritoPorId($base->link, $idCarritoInsertado);
-    header('Content-Type: application/json');
-    // Devuelve la fila como JSON
-    echo json_encode($filaInsertada);
-    exit();
-} */
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lineaCarrito = new Cart('', $vector['idUnico'], $vector['idProducto'], $vector['cantidad'], $vector['dniCliente']);
     if($lineaCarrito->insertarLineaCarrito($base->link)){
@@ -53,16 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT'){
-    $idProducto = $_GET['idProducto'];
+    $idCarrito = $_GET['idCarrito'];
     $cantidad = $_GET['cantidad'];
 
-    $cart = new Cart(0,0,$idProducto,$cantidad,0);
+    $cart = new Cart($idCarrito,0,0,$cantidad,0);
 
     if($cart->updateCarrito($base->link)){
         http_response_code(200); 
-        echo json_encode(["message" => "update exitoso"]);
+        echo json_encode("update exitoso");
     }else {
         http_response_code(500); 
-        echo json_encode(["message" => "Error en el update"]);
+        echo json_encode("Error en el update");
     }
 }

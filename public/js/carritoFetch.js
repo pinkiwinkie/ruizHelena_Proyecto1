@@ -14,6 +14,38 @@ fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
         console.error('Error al llamar al servicio del carrito:', error);
     });
 
+function eliminarProducto(idCarrito) {
+    fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            if (data && data.message === "Eliminación exitosa") {
+                return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
+            } else {
+                throw new Error('Error al eliminar el producto: Respuesta inesperada del servidor');
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor al obtener datos actualizados del carrito: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            imprimirCarrito(data);
+            alert('Producto eliminado exitosamente.');
+        })
+        .catch(error => {
+            console.error('Error al eliminar el producto:', error);
+        });
+}
 
 function imprimirCarrito(data) {
     let cartContainer = document.getElementById('cart-container');
@@ -116,39 +148,4 @@ function calcularSubtotal(data) {
         costoEnvio: costoEnvio.toFixed(2),
         total: total.toFixed(2)
     };
-}
-
-function insertarProducto(idCarrito, idUnico, idProducto, cantidad, dniCliente) {
-    alert("idC" + idCarrito + "idU" + idUnico + "idP" + idProducto + "cantidad" + cantidad + "dni" + dniCliente)
-    fetch("http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                idCarrito: idCarrito,
-                idUnico: idUnico,
-                idProducto: idProducto,
-                cantidad: cantidad,
-                dniCliente: dniCliente
-            }),
-        })
-        .then((response) => {
-            alert("idC" + idCarrito + "idU" + idUnico + "idP" + idProducto + "cantidad" + cantidad + "dni" + dniCliente)
-            if (!response.ok) {
-                throw new Error(
-                    `Error en la respuesta del servidor: ${response.statusText}`
-                );
-            }
-            return response.json();
-        })
-        .then((data) => {
-            alert("idC" + idCarrito + "idU" + idUnico + "idP" + idProducto + "cantidad" + cantidad + "dni" + dniCliente)
-            console.log(response.json());
-            console.log(data);
-            imprimirCarrito(data);
-        })
-        .catch((error) => {
-            console.error("Error al agregar el producto al carrito:", error);
-        });
 }

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
             echo "idProducto: $idProducto, cantidad: $cantidad, dniCliente: $dniCliente";
             echo "<script>
-        insertarProducto(0, 3, $idProducto, $cantidad, $dniCliente);
+        insertarProducto(0, 3, $idProducto, $cantidad, '$dniCliente');
         </script>"; 
         } else {
             echo "Error: Datos incompletos recibidos.";

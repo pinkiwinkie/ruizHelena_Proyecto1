@@ -15,15 +15,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lineaCarrito = new Cart(0, $_POST['idUnico'], $_POST['idProducto'], $_POST['cantidad'], $_POST['dniCliente']);
     $lineaCarrito->insertarLineaCarrito($base->link);
-    echo json_encode('insertado');
+    
+    // Obtén la fila recién insertada después de la inserción
+    $idCarritoInsertado = $base->link->lastInsertId();
+    $filaInsertada = $lineaCarrito->obtenerLineaCarritoPorId($base->link, $idCarritoInsertado);
+    header('Content-Type: application/json');
+    // Devuelve la fila como JSON
+    echo json_encode($filaInsertada);
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    $idUnico = $_GET['idUnico'];
-    $idProducto = $_GET['idProducto'];
 
-    $cart = new Cart($idUnico, $idProducto, 0, 0);
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    $idCarrito = $_GET['idCarrito'];
+
+    $cart = new Cart($idCarrito, 0, 0, 0, 0);
     
     if ($cart->deleteLineaCarrito($base->link)) {
         http_response_code(200); 

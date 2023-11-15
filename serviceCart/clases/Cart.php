@@ -32,8 +32,24 @@ class Cart
         }
     }
 
-    function insertarLineaCarrito($link)
+    function obtenerLineaCarritoPorId($link, $idCarrito)
     {
+        try {
+            $query = "SELECT * FROM carrito WHERE idCarrito = :idCarrito";
+            $result = $link->prepare($query);
+            $result->bindParam(':idCarrito', $idCarrito);
+            $result->execute();
+            return $result->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
+            echo $dato;
+            //require "vistas/mensaje.php";
+            die();
+        }
+    }
+
+
+    function insertarLineaCarrito($link){
         try {
             $query = "INSERT INTO carrito (idUnico, idProducto, cantidad, dniCliente) VALUES (:idUnico, :idProducto, :cantidad, :dniCliente)";
             $result = $link->prepare($query);
@@ -42,11 +58,13 @@ class Cart
             $result->bindParam(':cantidad', $this->cantidad);
             $result->bindParam(':dniCliente', $this->dniCliente);
             $result->execute();
-            return $result->fetch(PDO::FETCH_ASSOC);
+
+            // Devuelve la fila recién insertada
+            $this->idCarrito = $link->lastInsertId();
+            return $this->obtenerLineaCarritoPorId($link, $this->idCarrito);
         } catch (PDOException $e) {
             $dato = "¡Error!: " . $e->getMessage() . "<br/>";
             echo $dato;
-            //require "vistas/mensaje.php";
             die();
         }
     }

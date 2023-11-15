@@ -5,16 +5,8 @@ la barra lateral no se puede hacer fija porque si la haces fija:
     4: cuando es pequeño no funciona ese boton, solo cierra el aside con la x, ademas de que descuadra todo idk
 -> ocultar el main en modo pequeño solo cuando el menu esté abierto
 
-acabar la interfaz del carrito
-
 solucionar problemas de responsive de las paginas, algunas medio tienen, otras ni eso
 
-carrito
-    se tiene que poner la variable en cada clase porque 
-                                    no puedes incluir todas las clases a la vez
-                                    es mejor mostrar una variable en cada clase con la información ya
-
-primero hacer que se muestren todas las lineas de carrito en el front
-
-
 también falta utilizar la clase autoload
+
+comrprobar en insertar si ya esxite el producto, si existe sumar cantidad

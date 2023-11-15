@@ -226,7 +226,6 @@ function updateCarrito() {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 imprimirCarrito(data);
             })
             .catch(error => {

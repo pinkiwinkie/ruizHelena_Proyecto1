@@ -7,6 +7,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verificar si proviene del formulario
     if (isset($_POST['source']) && $_POST['source'] == 'form') {
         echo '<script>alert("Formulario")</script>';
+        if (isset($_POST['idProducto']) && isset($_POST['cantidad'])) {
+            // Recupera los datos
+            $idProducto = $_POST['idProducto'];
+            $cantidad = $_POST['cantidad'];
+            $dniCliente = $_COOKIE['dni'];
+        
+            echo "idProducto: $idProducto, cantidad: $cantidad, dniCliente: $dniCliente";
+            echo "<script>
+        insertarProducto(0, 3, $idProducto, $cantidad, $dniCliente);
+        </script>"; 
+        } else {
+            echo "Error: Datos incompletos recibidos.";
+        }
+        
     }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Verificar si proviene del enlace
@@ -14,11 +28,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo '<script>alert("link")</script>';
     }
 }
-
-
-/* echo ($_POST['idProducto']);
-echo ($_POST['cantidad']);
-echo "<script>
-insertarProducto(0,0,'". $_COOKIE['dni']. "' ,".  isset($_POST['idProducto']). ",'". isset($_POST['cantidad'])."');
-</script>"; */
-?>

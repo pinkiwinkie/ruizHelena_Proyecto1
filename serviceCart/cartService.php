@@ -13,16 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $lineaCarrito = new Cart(0,$_POST['idUnico'], $_POST['idProducto'], $_POST['cantidad'], $_POST['dniCliente']);
+    $lineaCarrito = new Cart(0, $_POST['idUnico'], $_POST['idProducto'], $_POST['cantidad'], $_POST['dniCliente']);
     $lineaCarrito->insertarLineaCarrito($base->link);
     echo json_encode('insertado');
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    $idCarrito = $_GET['idCarrito'];
-        
-    $cart = new Cart($idCarrito, 0, 0, 0, 0);
+    $idUnico = $_GET['idUnico'];
+    $idProducto = $_GET['idProducto'];
+
+    $cart = new Cart($idUnico, $idProducto, 0, 0);
     
     if ($cart->deleteLineaCarrito($base->link)) {
         http_response_code(200); 
@@ -33,16 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     }
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'PUT'){
-    $idCarrito = $_GET['idCarrito'];
-    $cantidad = $_GET['cantidad'];
+if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    $idUnico =$_GET['idUnico'];
+    $cantidad =$_GET['cantidad'];
     
-    $cart = new Cart($idCarrito,0,0,$cantidad,0);
+    $cart = new Cart($idUnico, 0, 0, $cantidad, 0);
 
-    if($cart->updateCarrito($base->link)){
+    if ($cart->updateCarrito($base->link)) {
         http_response_code(200); 
-        echo json_encode(["message" => "update exitoso"]);
-    }else {
+        echo json_encode(["message" => "Update exitoso"]);
+    } else {
         http_response_code(500); 
         echo json_encode(["message" => "Error en el update"]);
     }

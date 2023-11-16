@@ -85,6 +85,19 @@ class Cart
         }
     }
 
+    static function deleteCarrito($link, $idUnico) {
+        try {
+            $query = "DELETE FROM carrito WHERE idUnico = :idUnico";
+            $result = $link->prepare($query);
+            $result->bindParam(':idUnico', $idUnico);
+            return $result->execute();
+        } catch (PDOException $e) {
+            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
+            echo $dato;
+            die();
+        }
+    }
+
     function updateCarrito($link)
     {
         try {

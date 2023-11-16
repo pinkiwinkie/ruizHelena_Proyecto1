@@ -173,6 +173,9 @@ function imprimirCarrito(data) {
                 </div>
                 <div class="container_buttons">
                     <button class="m-2 btn btn-card update-button">Actualizar carrito</button>
+                    <form id="miFormulario" action="principal.php" method="POST">
+                        <button type = "submit" class="m-2 btn btn-card">Seguir comprando</button>
+                    </form>  
                     <form id="miFormulario" action="confirmar.php" method="POST">
                         <button type = "submit" class="m-2 btn btn-card">Pagar</button>
                     </form>    

@@ -100,4 +100,19 @@ class Cart
             die();
         }
     }
+
+    function updateDni($link){
+        try {
+            $query = "UPDATE carrito SET dniCliente = :dniCliente WHERE idUnico = :idUnico ";
+            $result = $link->prepare($query);
+            $result->bindParam(':dniCliente', $this->dniCliente);
+            $result->bindParam(':idUnico', $this->idUnico);
+            return $result->execute();
+        } catch (PDOException $e) {
+            $dato = "¡Error!: " . $e->getMessage() . "<br/>";
+            echo $dato;
+            //require "vistas/mensaje.php";
+            die();
+        }
+    }
 }

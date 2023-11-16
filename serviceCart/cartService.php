@@ -38,17 +38,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     }
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $idCarrito = $_GET['idCarrito'];
     $cantidad = $_GET['cantidad'];
 
-    $cart = new Cart($idCarrito,0,0,$cantidad,0);
+    if ($idCarrito && $cantidad) {
+        // Es una actualización de la cantidad en el carrito
+        $cart = new Cart($idCarrito, 0, 0, $cantidad, 0);
 
-    if($cart->updateCarrito($base->link)){
-        http_response_code(200); 
-        echo json_encode("update exitoso");
-    }else {
-        http_response_code(500); 
-        echo json_encode("Error en el update");
+        if ($cart->updateCarrito($base->link)) {
+            http_response_code(200);
+            echo json_encode("update exitoso");
+        } else {
+            http_response_code(500);
+            echo json_encode("Error en el update");
+        }
+    } else {
+        // Es una actualización del campo dniCliente
+        $idUnico = $vector['idUnico'];
+        $dniCliente = $vector['dniCliente'];
+
+        $cart = new Cart('', $idUnico, 0, 0, $dniCliente);
+
+        if ($cart->updateDni($base->link)) {
+            http_response_code(200);
+            echo json_encode("update dniCliente exitoso");
+        } else {
+            http_response_code(500);
+            echo json_encode("Error en el update dniCliente");
+        }
     }
 }

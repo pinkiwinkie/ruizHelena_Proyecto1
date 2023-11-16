@@ -6,7 +6,7 @@ include "./clases/Cart.php";
 $base = new Bd();
 $vector=json_decode( file_get_contents("php://input"),true);
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') { //pasarle id para diferenciar personas
     $datos = Cart::getAll($base->link);
     header("HTTP/1.1 200 OK");
     echo json_encode($datos);
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $idCarrito = $_GET['idCarrito'];
     $cantidad = $_GET['cantidad'];
 
-    if ($idCarrito && $cantidad) {
+    if ($idCarrito && $cantidad) { //comprobar con isset
         // Es una actualización de la cantidad en el carrito
         $cart = new Cart($idCarrito, 0, 0, $cantidad, 0);
 

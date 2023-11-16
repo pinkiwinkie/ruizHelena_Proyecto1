@@ -12,12 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         if($productoEncontrado){
             echo json_encode($productoEncontrado);
         }else {
-            echo "Producto no encontrado";
+            echo "Producto no encontrado"; //falta header-> codigo de estado
         }
         
     } else {
         $dato = Product::getAll($base->link);
-        $dato->setFetchMode(PDO::FETCH_ASSOC);
+        $dato->setFetchMode(PDO::FETCH_ASSOC);  //usar fecthAll
     
         $resultArray = [];
     

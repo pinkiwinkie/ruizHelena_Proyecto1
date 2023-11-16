@@ -16,16 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resultDireccion = $link->prepare($queryDireccion);
     $resultDireccion->bindParam(':dniCliente', $dniCliente);
     $resultDireccion->execute();
-    echo "1";
+    
     if ($rowDireccion = $resultDireccion->fetch(PDO::FETCH_ASSOC)) {
-        echo "2";
+        
         $direccionEntrega = $rowDireccion['direccion'];
 
         $pedido = new Pedido(date('Y-m-d H:i:s'), $direccionEntrega, $numeroTarjeta, null, null, $dniCliente);
         
 
         if ($pedido->insertarPedido($link)) {
-            echo "3";
+            
             $queryCarrito = "SELECT idProducto, cantidad FROM carrito WHERE idUnico = :idUnico";
             $result = $link->prepare($queryCarrito);
             $result->bindParam(':idUnico', $idUnico);

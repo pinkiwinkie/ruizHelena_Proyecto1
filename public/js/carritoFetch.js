@@ -207,17 +207,19 @@ function calcularSubtotal(data) {
 }
 
 function updateCarrito() {
-    let cantidadProduct = document.querySelectorAll('.cantidad-product');
+    let cantidadProducts = document.querySelectorAll('.cantidad-product');
 
-    cantidadProduct.forEach(element => {
-        arrayCantidad.push(element.value);
-    });
+    cantidadProducts.forEach((element, index) => {
+        let idCarrito = arrayIdCarrito[index];
+        let cantidad = element.value;
 
-    for (let i = 0; i < arrayIdCarrito.length; i++) {
-        fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${arrayIdCarrito[i]}&cantidad=${arrayCantidad[i]}`, {
+        fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}&cantidad=${cantidad}`, {
                 method: 'PUT',
             })
             .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+                }
                 return response.json();
             })
             .then(data => {
@@ -228,13 +230,16 @@ function updateCarrito() {
                 }
             })
             .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en la respuesta del servidor al obtener datos actualizados del carrito: ${response.statusText}`);
+                }
                 return response.json();
             })
             .then(data => {
                 imprimirCarrito(data);
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Error al actualizar el carrito:', error);
             });
-    }
+    });
 }

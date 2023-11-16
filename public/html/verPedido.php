@@ -55,6 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<input type='hidden' name='idPedido' value='{$pedido->getIdPedido()}'>";
 
         echo "<input type='hidden' name='infoHTML' value='" . htmlspecialchars($pedido->toHTML()) . "'>";
+        foreach ($lineasPedido as $index => $lineaPedido) {
+            echo "<input type='hidden' name='infoHTMLLinea{$index}' value='" . htmlspecialchars($lineaPedido->toHTML($link)) . "'>";
+        }
         echo "<button type='submit'>Generar PDF</button>";
         echo "</form>";
     } else {

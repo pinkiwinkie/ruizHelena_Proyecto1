@@ -41,7 +41,7 @@ class Pedido {
         }
     }
     function toHTML() {
-        $html = "<h2>Detalles del Pedido</h2><br/>";
+        $html = "<h2>Detalles del Pedido:</h2><br/>";
         $html .= "<p>ID Pedido: {$this->idPedido}</p><br/>";
         $html .= "<p>Fecha: {$this->fecha}</p><br/>";
         $html .= "<p>Direccion de Entrega: {$this->dirEntrega}</p><br/>";

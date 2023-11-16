@@ -31,4 +31,29 @@ class LineaPedido
             die();
         }
     }
+
+    function toHTML($link)
+    {
+        $html = "<p>Detalles de la línea de pedido:</p>";
+        $html .= "<p>ID Pedido: {$this->idPedido}</p>";
+        $html .= "<p>Número de Línea: {$this->nlinea}</p>";
+        
+        // Obtener información del producto
+        $queryProducto = "SELECT nombre, precio FROM productos WHERE idProducto = :idProducto";
+        $resultProducto = $link->prepare($queryProducto);
+        $resultProducto->bindParam(':idProducto', $this->idProducto);
+        $resultProducto->execute();
+
+        if ($rowProducto = $resultProducto->fetch(PDO::FETCH_ASSOC)) {
+            $html .= "<p>Producto: {$rowProducto['nombre']}</p>";
+            $html .= "<p>Cantidad: {$this->cantidad}</p>";
+            $html .= "<p>Precio Unitario: {$rowProducto['precio']}</p>";
+            $total = $this->cantidad * $rowProducto['precio'];
+            $html .= "<p>Total: {$total}</p>";
+        } else {
+            $html .= "<p>Error: No se pudo obtener la información del producto</p>";
+        }
+
+        return $html;
+    }
 }

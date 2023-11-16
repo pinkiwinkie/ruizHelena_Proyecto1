@@ -7,6 +7,7 @@ require "../../model/Bd.php";
 $base = new Bd();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $lineasPedido = [];
     $numeroTarjeta = $_POST['numero_tarjeta'];
     $dniCliente = $_COOKIE['dni'];
     $idUnico = $_COOKIE['idUnico'];
@@ -16,16 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resultDireccion = $link->prepare($queryDireccion);
     $resultDireccion->bindParam(':dniCliente', $dniCliente);
     $resultDireccion->execute();
-    
+
     if ($rowDireccion = $resultDireccion->fetch(PDO::FETCH_ASSOC)) {
-        
+
         $direccionEntrega = $rowDireccion['direccion'];
 
         $pedido = new Pedido(date('Y-m-d H:i:s'), $direccionEntrega, $numeroTarjeta, null, null, $dniCliente);
-        
+
 
         if ($pedido->insertarPedido($link)) {
-            
+
             $queryCarrito = "SELECT idProducto, cantidad FROM carrito WHERE idUnico = :idUnico";
             $result = $link->prepare($queryCarrito);
             $result->bindParam(':idUnico', $idUnico);
@@ -40,17 +41,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $lineaPedido = new LineaPedido($pedido->getIdPedido(), $maxNlinea + 1, $rowCarrito['idProducto'], $rowCarrito['cantidad']);
                 $lineaPedido->insertarLineaPedido($link);
+                $lineasPedido[] = $lineaPedido;
             }
             Cart::deleteCarrito($link, $idUnico);
         } else {
             echo "Error al añadir el pedido";
         }
         echo $pedido->toHTML();
-        echo "<form action='../../pdf/generarPdf.php' method='post'>
-                <input type='hidden' name='idPedido' value='{$pedido->getIdPedido()}'>
-                <input type='hidden' name='infoHTML' value='" . htmlspecialchars($pedido->toHTML()) . "'>
-                <button type='submit'>Generar PDF</button>
-                </form>";
+        foreach ($lineasPedido as $lineaPedido) {
+            echo $lineaPedido->toHTML($link);
+        }
+        echo "<form action='../../pdf/generarPdf.php' method='post'>";
+        echo "<input type='hidden' name='idPedido' value='{$pedido->getIdPedido()}'>";
+
+        echo "<input type='hidden' name='infoHTML' value='" . htmlspecialchars($pedido->toHTML()) . "'>";
+        echo "<button type='submit'>Generar PDF</button>";
+        echo "</form>";
     } else {
         echo "Error: No se pudo obtener la dirección de entrega del cliente";
     }

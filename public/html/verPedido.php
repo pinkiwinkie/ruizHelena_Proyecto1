@@ -2,6 +2,7 @@
 
 require "../../serviceCart/clases/LineaPedido.php";
 require "../../serviceCart/clases/Pedido.php";
+require "../../serviceCart/clases/Cart.php";
 require "../../model/Bd.php";
 $base = new Bd();
 
@@ -38,15 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $maxNlinea = $resultMaxNlinea->fetch(PDO::FETCH_ASSOC)['maxNlinea'];
 
                 $lineaPedido = new LineaPedido($pedido->getIdPedido(), $maxNlinea + 1, $rowCarrito['idProducto'], $rowCarrito['cantidad']);
-                if( $lineaPedido->insertarLineaPedido($link)){
-                    //Cart::deleteCarrito($link, $idUnico);
-                    echo "ccorecto";
-                }
+                $lineaPedido->insertarLineaPedido($link);
             }
+            Cart::deleteCarrito($link, $idUnico);
         } else {
             echo "Error al añadir el pedido";
         }
         echo $pedido->toHTML();
+        echo "<form action='../../pdf/generarPdf.php' method='post'>
+                <input type='hidden' name='idPedido' value='{$pedido->getIdPedido()}'>
+                <input type='hidden' name='infoHTML' value='" . htmlspecialchars($pedido->toHTML()) . "'>
+                <button type='submit'>Generar PDF</button>
+                </form>";
     } else {
         echo "Error: No se pudo obtener la dirección de entrega del cliente";
     }

@@ -44,8 +44,8 @@ class Pedido {
         $html = "<h2>Detalles del Pedido</h2><br/>";
         $html .= "<p>ID Pedido: {$this->idPedido}</p><br/>";
         $html .= "<p>Fecha: {$this->fecha}</p><br/>";
-        $html .= "<p>Dirección de Entrega: {$this->dirEntrega}</p><br/>";
-        $html .= "<p>Número de Tarjeta: {$this->nTarjeta}</p><br/>";
+        $html .= "<p>Direccion de Entrega: {$this->dirEntrega}</p><br/>";
+        $html .= "<p>Numero de Tarjeta: {$this->nTarjeta}</p><br/>";
         $html .= "<p>DNI del Cliente: {$this->dniCliente}</p><br/>";
 
         return $html;

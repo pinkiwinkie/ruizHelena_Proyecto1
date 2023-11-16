@@ -176,7 +176,7 @@ INSERT INTO `productos` (`idProducto`, `nombre`, `descripcion`, `foto`, `marca`,
 
 CREATE TABLE `carrito` (
   `idCarrito` int(6) NOT NULL,
-  `idUnico` int(6) NOT NULL,
+  `idUnico` varchar(255) NOT NULL,
   `idProducto` int(6) NOT NULL,
   `cantidad` int(99) DEFAULT NULL,
   `dniCliente` varchar(9) COLLATE utf8_unicode_ci

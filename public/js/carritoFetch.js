@@ -9,8 +9,6 @@ fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
         return response.json();
     })
     .then(data => {
-        console.log(data);
-
         imprimirCarrito(data);
     })
     .catch(error => {
@@ -18,6 +16,7 @@ fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
     });
 
 function insertarProducto(idCarrito, idUnico, idProducto, cantidad, dniCliente) {
+    alert(idUnico)
     let options = {
         method: "POST",
         headers: {
@@ -51,6 +50,7 @@ function insertarProducto(idCarrito, idUnico, idProducto, cantidad, dniCliente) 
             }
             return response.json();
         }).then(data => {
+            console.log(data);
             imprimirCarrito(data);
             alert('Producto añadido exitosamente.');
         })
@@ -173,7 +173,9 @@ function imprimirCarrito(data) {
                 </div>
                 <div class="container_buttons">
                     <button class="m-2 btn btn-card update-button">Actualizar carrito</button>
-                    <button class="m-2 btn btn-card">Pagar</button>
+                    <form id="miFormulario" action="confirmar.php" method="POST">
+                        <button type = "submit" class="m-2 btn btn-card">Pagar</button>
+                    </form>    
                 </div>                            
             </div>
         `;

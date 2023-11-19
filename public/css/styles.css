@@ -129,8 +129,6 @@ a.sidebar-link {
     background-color: #ecb4bb;
 }
 
-.nameUsuario {}
-
 
 /* social Media*/
 
@@ -183,9 +181,6 @@ a.sidebar-link {
 }
 
 
-/* Cart */
-
-
 /* Responsive */
 
 @media (min-width:768px) {
@@ -194,7 +189,7 @@ a.sidebar-link {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
     .close-button {
         display: block;
     }

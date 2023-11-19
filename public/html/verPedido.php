@@ -1,5 +1,6 @@
 <?php
 
+//esto seria el controlador y los metodos tienen que ir en el servicio
 require "../../serviceCart/clases/LineaPedido.php";
 require "../../serviceCart/clases/Pedido.php";
 require "../../serviceCart/clases/Cart.php";

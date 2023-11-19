@@ -139,7 +139,7 @@ main {
     }
     .caja__fondo {
         max-width: 350px;
-        height: 300px;
+        height: 200px;
         flex-direction: column;
         margin: auto;
     }

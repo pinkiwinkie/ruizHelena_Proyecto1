@@ -29,25 +29,61 @@
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
                         <a href="home.php" class="sidebar-link">
-                            <i class="bi bi-house pe-2"></i>Home
+                            <i class="bi bi-house pe-2"></i>Inicio
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages">
-                            <i class="bi bi-file-earmark-text pe-2"></i> Pages
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#language" aria-expanded="false" aria-controls="language">
+                            <i class="bi bi-translate pe-2"></i> Idioma
                         </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="language" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">About</a>
+                                <a href="#" class="sidebar-link">Español</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Products</a>
+                                <a href="../../controller/principal.php" class="sidebar-link">Inglés</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../controller/principal.php" class="sidebar-link">Francés</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../controller/principal.php" class="sidebar-link">Alemán</a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                            <i class="bi bi-file-earmark-text pe-2"></i> Páginas
+                        </a>
+                        <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">
+                                <i class="bi bi-info-circle pe-2"></i>Sobre nosotros
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../controller/principal.php" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                    <i class="bi bi-boxes pe-2"></i> Productos
+                                </a>
+                                <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#multi">
+                                    <li class="sidebar-item">
+                                        <a href="../../controller/principal.php" class="sidebar-link">
+                                            <i class="bi bi-person-standing pe-2"></i>Hombre
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="../../controller/principal.php" class="sidebar-link">
+                                            <i class="bi bi-person-standing-dress pe-2"></i>Mujer
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
                         <a href="" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                            <i class="bi bi-person pe-2"></i>Auth
+                            <i class="bi bi-person pe-2"></i>Autenticación
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">

@@ -97,7 +97,7 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../html/login.php" class="sidebar-link">Login</a>
+                                <a href="../html/login.php" class="sidebar-link active">Login</a>
                             </li>
                         </ul>
                     </li>

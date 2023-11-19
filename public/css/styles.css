@@ -115,6 +115,10 @@ a.sidebar-link {
     transition: all .2s ease-out;
 }
 
+.sidebar-item>a.active {
+    color: #ecb4bb;
+}
+
 .sidebar-item>a,
 .socialMedia>a>i {
     color: #5ca0a5;

@@ -28,8 +28,9 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="home.php" class="sidebar-link">
-                            <i class="bi bi-house pe-2"></i>Inicio
+                        <a href="home.php" class="active sidebar-link">
+                            <i class="bi bi-house pe-2"></i>
+                            Inicio
                         </a>
                     </li>
                     <li class="sidebar-item">

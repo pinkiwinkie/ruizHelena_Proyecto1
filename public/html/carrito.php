@@ -102,7 +102,7 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../controller/verCarrito.php?source=link" class="sidebar-link" id="carritoLink">
+                        <a href="../../controller/verCarrito.php?source=link" class="sidebar-link active" id="carritoLink">
                             <i class="bi bi-cart pe-2"></i>Carrito
                         </a>
                     </li>

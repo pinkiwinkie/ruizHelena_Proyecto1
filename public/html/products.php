@@ -72,17 +72,17 @@
                                 </a>
                                 <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#multi">
                                     <li class="sidebar-item">
-                                        <a href="./principal.php" class="sidebar-link">
+                                        <a href="./principal.php" class="sidebar-link pdr">
                                             <i class="bi bi-people-fill pe-2"></i>Todos
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="./principal.php" class="sidebar-link">
+                                        <a href="./principal.php" class="sidebar-link pdr">
                                             <i class="bi bi-person-standing pe-2"></i>Hombre
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="./principal.php" class="sidebar-link">
+                                        <a href="./principal.php" class="sidebar-link pdr">
                                             <i class="bi bi-person-standing-dress pe-2"></i>Mujer
                                         </a>
                                     </li>
@@ -97,7 +97,7 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../html/login.php" class="sidebar-link">Login</a>
+                                <a href="../public/html/login.php" class="sidebar-link">Login</a>
                             </li>
                         </ul>
                     </li>
@@ -169,6 +169,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="../public/js/main.js"></script>
+    <script type="module" src="../public/js/products.js"></script>
 </body>
 
 </html>

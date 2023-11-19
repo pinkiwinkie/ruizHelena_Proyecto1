@@ -27,7 +27,7 @@
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="home.php" class="sidebar-link">
+                        <a href="../public/html/home.php" class="sidebar-link">
                             <i class="bi bi-house pe-2"></i>Inicio
                         </a>
                     </li>
@@ -40,13 +40,13 @@
                                 <a href="#" class="sidebar-link">Español</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Inglés</a>
+                                <a href="#" class="sidebar-link">Inglés</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Francés</a>
+                                <a href="#" class="sidebar-link">Francés</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Alemán</a>
+                                <a href="#" class="sidebar-link">Alemán</a>
                             </li>
                         </ul>
                     </li>
@@ -61,17 +61,22 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
                                     <i class="bi bi-boxes pe-2"></i> Productos
                                 </a>
                                 <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#multi">
-                                    <li class="sidebar-item">
-                                        <a href="../../controller/principal.php" class="sidebar-link">
+                                <li class="sidebar-item">
+                                        <a href="../../principal.php" class="sidebar-link">
+                                            <i class="bi bi-people-fill pe-2"></i>Todos
+                                        </a>
+                                    </li>    
+                                <li class="sidebar-item">
+                                        <a href="./principal.php" class="sidebar-link">
                                             <i class="bi bi-person-standing pe-2"></i>Hombre
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="../../controller/principal.php" class="sidebar-link">
+                                        <a href="./principal.php" class="sidebar-link">
                                             <i class="bi bi-person-standing-dress pe-2"></i>Mujer
                                         </a>
                                     </li>
@@ -86,12 +91,12 @@
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="../html/login.php" class="sidebar-link">Login</a>
+                                <a href="../public/html/login.php" class="sidebar-link">Login</a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../controller/verCarrito.php?source=link" class="sidebar-link" id="carritoLink">
+                        <a href="./verCarrito.php?source=link" class="sidebar-link" id="carritoLink">
                             <i class="bi bi-cart pe-2"></i>Carrito
                         </a>
                     </li>

@@ -41,13 +41,13 @@
                                 <a href="#" class="sidebar-link">Español</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Inglés</a>
+                                <a href="#" class="sidebar-link">Inglés</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Francés</a>
+                                <a href="#" class="sidebar-link">Francés</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link">Alemán</a>
+                                <a href="#" class="sidebar-link">Alemán</a>
                             </li>
                         </ul>
                     </li>
@@ -58,14 +58,19 @@
                         <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">
-                                <i class="bi bi-info-circle pe-2"></i>Sobre nosotros
+                                    <i class="bi bi-info-circle pe-2"></i>Sobre nosotros
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="../../controller/principal.php" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
                                     <i class="bi bi-boxes pe-2"></i> Productos
                                 </a>
                                 <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#multi">
+                                    <li class="sidebar-item">
+                                        <a href="../../controller/principal.php" class="sidebar-link">
+                                            <i class="bi bi-people-fill pe-2"></i>Todos
+                                        </a>
+                                    </li>
                                     <li class="sidebar-item">
                                         <a href="../../controller/principal.php" class="sidebar-link">
                                             <i class="bi bi-person-standing pe-2"></i>Hombre

@@ -27,7 +27,7 @@ main {
     display: flex;
     justify-content: center;
     backdrop-filter: blur(1rem);
-    background-color: rgba(236, 180, 187, 0.6);
+    background-color: rgba(236, 180, 187);
     border-radius: 25px;
 }
 
@@ -87,7 +87,7 @@ main {
     padding: 80px 20px;
     /*background: #c7afcf;*/
     backdrop-filter: blur(1rem);
-    background-color: rgba(245, 245, 198, 0.5);
+    background-color: rgba(245, 245, 198);
     box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
     position: absolute;
     border-radius: 25px;

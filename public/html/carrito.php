@@ -40,19 +40,19 @@
                         <ul id="language" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">
-                                    <img src="../img/esp.png" alt="" class="pe-2">Español</a>
+                                    <img src="../public/img/esp.png" alt="" class="pe-2">Español</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">
-                                    <img src="../img/ing.png" alt="" class="pe-2">Inglés</a>
+                                    <img src="../public/img/ing.png" alt="" class="pe-2">Inglés</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">
-                                    <img src="../img/fra.png" alt="" class="pe-2">Francés</a>
+                                    <img src="../public/img/fra.png" alt="" class="pe-2">Francés</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">
-                                    <img src="../img/ale.png" alt="" class="pe-2">Alemán</a>
+                                    <img src="../public/img/ale.png" alt="" class="pe-2">Alemán</a>
                             </li>
                         </ul>
                     </li>

@@ -4,6 +4,7 @@ var box_background_signup = document.querySelector(".bg__box-signup");
 var form_login = document.querySelector(".form__login");
 var form_signup = document.querySelector(".form__signup");
 
+//funcionamiento para hacerlo responsive
 function pageWidth() {
     if (window.innerHeight > 700) {
         box_background_login.style.display = "block";
@@ -18,6 +19,7 @@ function pageWidth() {
     }
 }
 
+//form de registrarse
 function signup() {
     if (window.innerWidth > 700) {
         form_signup.style.display = "block";
@@ -35,6 +37,7 @@ function signup() {
     }
 }
 
+//form de iniciar sesion
 function login() {
     if (window.innerWidth > 700) {
         form_signup.style.display = "none";

@@ -11,7 +11,7 @@ formLogin.addEventListener("submit", function(e) {
     console.log(dniCliente);
     console.log(pwd);
 
-
+    //llamada al servicio cliente , pasandole los datos de inicio de sesion
     fetch(`http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php?dniCliente=${dniCliente}&pwd=${pwd}`)
         .then(res => res.json())
         .then(data => {

@@ -1,6 +1,6 @@
 var arrayCantidad = [];
 var arrayIdCarrito = [];
-
+//llamada al servicio del carrito
 fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
     .then(response => {
         if (!response.ok) {
@@ -16,20 +16,21 @@ fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php')
     });
 
 function insertarProducto(idCarrito, idUnico, idProducto, cantidad, dniCliente) {
-    alert(idUnico)
+    //alert(idUnico)
     let options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            idCarrito: idCarrito,
-            idUnico: idUnico,
-            idProducto: idProducto,
-            cantidad: cantidad,
-            dniCliente: dniCliente
-        })
-    }
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idCarrito: idCarrito,
+                idUnico: idUnico,
+                idProducto: idProducto,
+                cantidad: cantidad,
+                dniCliente: dniCliente
+            })
+        }
+        //llamada al servicio del carrito
     fetch("http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php", options)
         .then((response) => {
             if (!response.ok) {
@@ -40,6 +41,7 @@ function insertarProducto(idCarrito, idUnico, idProducto, cantidad, dniCliente) 
         })
         .then((data) => {
             if (data) {
+                //llamada al servicio del carrito
                 return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
             } else {
                 throw new Error('Error: Respuesta inesperada del servidor');
@@ -59,6 +61,7 @@ function insertarProducto(idCarrito, idUnico, idProducto, cantidad, dniCliente) 
 }
 
 function eliminarProducto(idCarrito) {
+    //llamada al servicio de carrito
     fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}`, {
             method: 'DELETE',
         })
@@ -70,6 +73,7 @@ function eliminarProducto(idCarrito) {
         })
         .then(data => {
             if (data && data.message === "Eliminación exitosa") {
+                //llamada al servicio del carrito
                 return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
             } else {
                 throw new Error('Error al eliminar el producto: Respuesta inesperada del servidor');
@@ -95,7 +99,7 @@ function imprimirCarrito(data) {
 
     cartContainer.innerHTML = '';
     cartBottom.innerHTML = '';
-
+    //comprueba si hay productos
     if (data.length === 0) {
         let mensajeVacio = document.createElement('p');
         mensajeVacio.textContent = 'No hay productos en el carrito.';
@@ -213,7 +217,7 @@ function updateCarrito() {
         let idCarrito = arrayIdCarrito[index];
         let cantidad = element.value;
 
-        // Create a fetch promise for each product
+        // crea una promesa por cada producto
         let updateRequest = fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}&cantidad=${cantidad}`, {
                 method: 'PUT',
             })
@@ -227,13 +231,13 @@ function updateCarrito() {
         updateRequests.push(updateRequest);
     });
 
-    // Wait for all fetch promises to resolve
+    // Espera a cada promesa de cada producto para continuar
     Promise.all(updateRequests)
         .then(responses => {
-            // Check if all responses are successful
-            let allResponsesSuccessful = responses.every(response => response);
+            // Comprueba si las respuestas son correctas
+            let respuestaOk = responses.every(response => response);
 
-            if (allResponsesSuccessful) {
+            if (respuestaOk) {
                 return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
             } else {
                 throw new Error('Error al actualizar el carrito: Respuesta inesperada del servidor');

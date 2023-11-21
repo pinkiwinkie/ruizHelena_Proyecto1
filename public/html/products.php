@@ -121,16 +121,6 @@
             </div>
         </aside>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel">Cart</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <!-- Contenido de tu carrito de compras aquí -->
-            </div>
-        </div>
-
         <!-- Main Component -->
 
         <div class="main">
@@ -149,7 +139,7 @@
                     <?php
                     foreach ($data as $product) {
                         echo "
-                            <div class='col-3 d-flex '>
+                            <div class='col-md-3 col-sm-6 d-flex '>
                                 <div class='card card-home mb-3 m-2 cb1 text-center' style='margin: 10px;'>
                                     <img src='" . $product->foto . "' class='card-img-top' alt='...'>
                                     <div class='card-body'>

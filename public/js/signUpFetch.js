@@ -19,6 +19,7 @@ formRegister.addEventListener("submit", function(e) {
     ) {
         alert("Introduce valores");
     } else {
+        //lamada al servicio cliente
         fetch("http://localhost/ruizHelena_Proyecto1/serviceCliente/clienteService.php", {
                 method: "POST",
                 body: dates,

@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $idCarrito = $_GET['idCarrito'];
     $cantidad = $_GET['cantidad'];
 
-    if ($idCarrito && $cantidad) { //comprobar con isset
+    if (isset($idCarrito) && isset($cantidad)) { //comprobar con isset
         // Es una actualización de la cantidad en el carrito
         $cart = new Cart($idCarrito, 0, 0, $cantidad, 0);
 

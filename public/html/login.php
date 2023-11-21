@@ -72,7 +72,7 @@
                                 </a>
                                 <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#multi">
                                 <li class="sidebar-item">
-                                        <a href="../../principal.php" class="sidebar-link">
+                                        <a href="../../controller/principal.php" class="sidebar-link">
                                             <i class="bi bi-people-fill pe-2"></i>Todos
                                         </a>
                                     </li>    

@@ -209,11 +209,11 @@ function calcularSubtotal(data) {
 function updateCarrito() {
     let cantidadProducts = document.querySelectorAll('.cantidad-product');
 
-    cantidadProducts.forEach((element, index) => {
+    let updateRequests = Array.from(cantidadProducts).map(async(element, index) => {
         let idCarrito = arrayIdCarrito[index];
         let cantidad = element.value;
 
-        fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}&cantidad=${cantidad}`, {
+        return fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}&cantidad=${cantidad}`, {
                 method: 'PUT',
             })
             .then(response => {
@@ -221,25 +221,29 @@ function updateCarrito() {
                     throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
                 }
                 return response.json();
-            })
-            .then(data => {
-                if (data) {
-                    return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
-                } else {
-                    throw new Error('Error al actualizar el carrito: Respuesta inesperada del servidor');
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Error en la respuesta del servidor al obtener datos actualizados del carrito: ${response.statusText}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                imprimirCarrito(data);
-            })
-            .catch(error => {
-                console.error('Error al actualizar el carrito:', error);
             });
     });
+
+    fetch(updateRequests)
+        .then(responses => {
+            let allResponsesSuccessful = responses.every(response => response);
+
+            if (allResponsesSuccessful) {
+                return fetch('http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php');
+            } else {
+                throw new Error('Error al actualizar el carrito: Respuesta inesperada del servidor');
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor al obtener datos actualizados del carrito: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            imprimirCarrito(data);
+        })
+        .catch(error => {
+            console.error('Error al actualizar el carrito:', error);
+        });
 }

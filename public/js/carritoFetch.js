@@ -52,7 +52,6 @@ function insertarProducto(idCarrito, idUnico, idProducto, cantidad, dniCliente) 
         }).then(data => {
             console.log(data);
             imprimirCarrito(data);
-            alert('Producto añadido exitosamente.');
         })
         .catch((error) => {
             console.error("Error al agregar el producto al carrito:", error);
@@ -84,7 +83,6 @@ function eliminarProducto(idCarrito) {
         })
         .then(data => {
             imprimirCarrito(data);
-            alert('Producto eliminado exitosamente.');
         })
         .catch(error => {
             console.error('Error al eliminar el producto:', error);
@@ -209,11 +207,14 @@ function calcularSubtotal(data) {
 function updateCarrito() {
     let cantidadProducts = document.querySelectorAll('.cantidad-product');
 
-    let updateRequests = Array.from(cantidadProducts).map(async(element, index) => {
+    let updateRequests = [];
+
+    cantidadProducts.forEach((element, index) => {
         let idCarrito = arrayIdCarrito[index];
         let cantidad = element.value;
 
-        return fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}&cantidad=${cantidad}`, {
+        // Create a fetch promise for each product
+        let updateRequest = fetch(`http://localhost/ruizHelena_Proyecto1/serviceCart/cartService.php?idCarrito=${idCarrito}&cantidad=${cantidad}`, {
                 method: 'PUT',
             })
             .then(response => {
@@ -222,10 +223,14 @@ function updateCarrito() {
                 }
                 return response.json();
             });
+
+        updateRequests.push(updateRequest);
     });
 
-    fetch(updateRequests)
+    // Wait for all fetch promises to resolve
+    Promise.all(updateRequests)
         .then(responses => {
+            // Check if all responses are successful
             let allResponsesSuccessful = responses.every(response => response);
 
             if (allResponsesSuccessful) {
